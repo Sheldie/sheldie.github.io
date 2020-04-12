@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-12T17:03:30.699Z</updated>
+    <updated>2020-04-12T17:13:11.338Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -18,10 +18,14 @@
         <updated>2020-04-12T00:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>转载自：</p>
 <ol>
-<li>分布式与集群的区别是什么？ - 大闲人柴毛毛的回答 - 知乎<br>
-https://www.zhihu.com/question/20004877/answer/282033178</li>
-<li>分布式与集群的区别是什么？ - 灵剑的回答 - 知乎<br>
-https://www.zhihu.com/question/20004877/answer/568581790</li>
+<li>
+<p>分布式与集群的区别是什么？ - 大闲人柴毛毛的回答 - 知乎<br>
+https://www.zhihu.com/question/20004877/answer/282033178</p>
+</li>
+<li>
+<p>分布式与集群的区别是什么？ - 灵剑的回答 - 知乎<br>
+https://www.zhihu.com/question/20004877/answer/568581790</p>
+</li>
 </ol>
 <h3 id="单机结构"><strong>单机结构</strong></h3>
 <p>我想大家最最最熟悉的就是单机结构，一个系统业务量很小的时候所有的代码都放在一个项目中就好了，然后这个项目部署在一台服务器上就好了。整个项目所有的服务都由这台服务器提供。这就是单机结构。</p>
@@ -78,6 +82,56 @@ https://www.zhihu.com/question/20004877/answer/568581790</li>
 <p>未来，它一定会成为你离不开的伙伴</p>
 <p>尽情发挥你的才华吧！</p>
 <p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Win10安装PyGraphviz]]></title>
+        <id>https://sheldie.github.io/post/Win10安装PyGraphviz/</id>
+        <link href="https://sheldie.github.io/post/Win10安装PyGraphviz/">
+        </link>
+        <updated>2020-04-02T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="正确安装方法">正确安装方法</h4>
+<p>提前安装好graphviz并配置环境变量<br>
+然后在：https://github.com/CristiFati/Prebuilt-Binaries<br>
+下载对应py版本和系统的版本<br>
+到目录中执行<code>pip install pygraphviz-1.5-cp37-cp37m-win_amd64.whl</code></p>
+<h4 id="以下为个人经历">以下为个人经历</h4>
+<p>anaconda的环境为python3.7，<br>
+由于需要安装Causalnex的关系，<br>
+需要使用到pygraphviz，然而安装的时候发现与各种库的版本有冲突。。</p>
+<p>于是新建项目和虚拟环境<br>
+重新尝试<code>pip install graphviz</code><br>
+报错：Microsoft Visual C++ 14.0 is required.<br>
+（新电脑没安装Visual Studio)</p>
+<p>安装重启过后，<br>
+报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
+<p>在网上寻找解决方案，<br>
+尝试直接下载whl文件并安装：https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygraphviz<br>
+但是发现没有对应版本，只有python3.4的版本。<br>
+强行下载尝试，报错：not a supported wheel</p>
+<p>尝试使用conda新建一个python3.4的虚拟环境<br>
+倒腾半天，发现pycharm已不支持python3.4<br>
+于是删除</p>
+<p>然后尝试直接下载源代码并安装：https://github.com/pygraphviz/pygraphviz<br>
+果然还是报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
+<p>最后在网上找到了该库的编译版本...</p>
+<p>吐了。</p>
+<p>现正学习并尝试使用Casualnex...</p>
+<h5 id="2020-04-04-更新">2020-04-04 更新：</h5>
+<p>尝试使用CausalNex过后，发现这个库应该是还在开发中。。<br>
+使用起来挺不稳定的，近一个月还更改过集成的库<br>
+本来用的是networkx，后来换成pygraphviz的</p>
+<p>安装的时候就出现了版本不兼容的问题<br>
+运行示例代码就出现了很多问题，报错也极其诡异<br>
+粗略判断还是版本问题</p>
+<p>本人水平有限，最近精力也有限...<br>
+机器学习这方面基本是零基础<br>
+最近也是在网上找些样例在学习<br>
+主要还是把重点放在比较基础的操作上吧<br>
+有时间和条件多了解一些相关原理</p>
+<p>因为了解不够也没法很好地提出问题<br>
+所以这个库还是暂时弃用吧<br>
+会继续关注 希望能逐步完善好~</p>
 ]]></content>
     </entry>
 </feed>

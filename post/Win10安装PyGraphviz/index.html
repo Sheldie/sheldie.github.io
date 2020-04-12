@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hello Gridea | Shezzer&#39;s Blog</title>
+<title>Win10安装PyGraphviz | Shezzer&#39;s Blog</title>
 <link rel="shortcut icon" href="https://sheldie.github.io/favicon.ico?v=1586711588150">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sheldie.github.io/styles/main.css">
@@ -95,52 +95,66 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Hello Gridea
+                    Win10安装PyGraphviz
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-04-12 ·
+                        · 2020-04-02 ·
                     </time>
                     
-                        <a href="https://sheldie.github.io/tag/HJRsprDoD/" class="post-tags">
-                            # Gridea
+                        <a href="https://sheldie.github.io/tag/KCPGu6P82/" class="post-tags">
+                            # PyGraphviz
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                    <h4 id="正确安装方法">正确安装方法</h4>
+<p>提前安装好graphviz并配置环境变量<br>
+然后在：https://github.com/CristiFati/Prebuilt-Binaries<br>
+下载对应py版本和系统的版本<br>
+到目录中执行<code>pip install pygraphviz-1.5-cp37-cp37m-win_amd64.whl</code></p>
+<h4 id="以下为个人经历">以下为个人经历</h4>
+<p>anaconda的环境为python3.7，<br>
+由于需要安装Causalnex的关系，<br>
+需要使用到pygraphviz，然而安装的时候发现与各种库的版本有冲突。。</p>
+<p>于是新建项目和虚拟环境<br>
+重新尝试<code>pip install graphviz</code><br>
+报错：Microsoft Visual C++ 14.0 is required.<br>
+（新电脑没安装Visual Studio)</p>
+<p>安装重启过后，<br>
+报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
+<p>在网上寻找解决方案，<br>
+尝试直接下载whl文件并安装：https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygraphviz<br>
+但是发现没有对应版本，只有python3.4的版本。<br>
+强行下载尝试，报错：not a supported wheel</p>
+<p>尝试使用conda新建一个python3.4的虚拟环境<br>
+倒腾半天，发现pycharm已不支持python3.4<br>
+于是删除</p>
+<p>然后尝试直接下载源代码并安装：https://github.com/pygraphviz/pygraphviz<br>
+果然还是报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
+<p>最后在网上找到了该库的编译版本...</p>
+<p>吐了。</p>
+<p>现正学习并尝试使用Casualnex...</p>
+<h5 id="2020-04-04-更新">2020-04-04 更新：</h5>
+<p>尝试使用CausalNex过后，发现这个库应该是还在开发中。。<br>
+使用起来挺不稳定的，近一个月还更改过集成的库<br>
+本来用的是networkx，后来换成pygraphviz的</p>
+<p>安装的时候就出现了版本不兼容的问题<br>
+运行示例代码就出现了很多问题，报错也极其诡异<br>
+粗略判断还是版本问题</p>
+<p>本人水平有限，最近精力也有限...<br>
+机器学习这方面基本是零基础<br>
+最近也是在网上找些样例在学习<br>
+主要还是把重点放在比较基础的操作上吧<br>
+有时间和条件多了解一些相关原理</p>
+<p>因为了解不够也没法很好地提出问题<br>
+所以这个库还是暂时弃用吧<br>
+会继续关注 希望能逐步完善好~</p>
 
                 </div>
             </article>
         </div>
 
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://sheldie.github.io/post/Win10安装PyGraphviz/" class="post-title gt-a-link">
-                    Win10安装PyGraphviz
-                </a>
-            </div>
         
 
         
