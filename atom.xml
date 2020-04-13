@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-13T09:34:44.490Z</updated>
+    <updated>2020-04-13T14:11:32.372Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://sheldie.github.io/images/avatar.png</logo>
     <icon>https://sheldie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[博客说明]]></title>
+        <id>https://sheldie.github.io/post/博客说明/</id>
+        <link href="https://sheldie.github.io/post/博客说明/">
+        </link>
+        <updated>2020-04-13T13:56:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>本博客新建于2020年4月 🙄<br>
+主要用于个人学习 🚀<br>
+以前的内容就不搬过来了<br>
+之后会陆续更新的~</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>本博客新建于2020年4月 🙄<br>
+主要用于个人学习 🚀<br>
+以前的内容就不搬过来了<br>
+之后会陆续更新的~</p>
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[分布式与集群]]></title>
         <id>https://sheldie.github.io/post/分布式与集群/</id>
