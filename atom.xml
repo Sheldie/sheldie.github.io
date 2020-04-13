@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-13T09:17:24.367Z</updated>
+    <updated>2020-04-13T09:34:44.490Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -148,6 +148,41 @@ Owner填写自己Github的用户名</p>
 打开任意文章页 - 使用Github登录后便可以进行评论<br>
 内容会出现在仓库的Issues中，可以进行修改和删除</p>
 <p>到这里就配置完成了😀</p>
+<hr>
+<p>2020-04-13:</p>
+<p>总结两个问题：</p>
+<ol>
+<li>
+<blockquote>
+<p>未找到相关的 <a href="https://github.com/Sheldie/sheldie.GiTalk/issues">Issues</a> 进行评论<br>
+请联系 @Sheldie 初始化创建</p>
+</blockquote>
+<p>发布文章后，打开对应文章页登录Github账号，会自动创建Issue<br>
+否则无法进行评论</p>
+</li>
+<li>
+<p>部分文章出现 Error: Validation Failed.</p>
+<p>原因是某些文章标题较长，自动创建Issue时，超出了50字符限制</p>
+<p>解决方法：打开所用主题的源代码，找到相关部分</p>
+<pre><code>  var gitalk = new Gitalk({
+    clientID: '&lt;%= commentSetting.gitalkSetting.clientId %&gt;',
+    clientSecret: '&lt;%= commentSetting.gitalkSetting.clientSecret %&gt;',
+    repo: '&lt;%= commentSetting.gitalkSetting.repository %&gt;',
+    owner: '&lt;%= commentSetting.gitalkSetting.owner %&gt;',
+    admin: ['&lt;%= commentSetting.gitalkSetting.owner %&gt;'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+</code></pre>
+<p>可以看到pure主题也有提示<br>
+id 需要保证长度和唯一性<br>
+将<code>id: location.pathname</code><br>
+改为<code>id: decodeURI(location.pathname)</code><br>
+解码后长度会变短</p>
+<p>同样也可以转成 md5<br>
+相关问题可参考：https://github.com/gitalk/gitalk/issues/102</p>
+</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
