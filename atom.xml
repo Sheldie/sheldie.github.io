@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-13T08:32:10.714Z</updated>
+    <updated>2020-04-13T08:54:46.761Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -100,6 +100,54 @@ https://www.zhihu.com/question/20004877/answer/568581790</p>
 <p>因为了解不够也没法很好地提出问题<br>
 所以这个库还是暂时弃用吧<br>
 会继续关注 希望能逐步完善好~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[配置GiTalk]]></title>
+        <id>https://sheldie.github.io/post/配置GiTalk/</id>
+        <link href="https://sheldie.github.io/post/配置GiTalk/">
+        </link>
+        <updated>2020-01-01T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>😃 给博客开放一下评论功能~</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>😃 给博客开放一下评论功能~</p>
+<!-- more -->
+<ol>
+<li>
+<p>首先在Github中进行以下设置：</p>
+<ul>
+<li>
+<p>打开<code>Github - Settings - Developer Settings - OAuth Apps - New OAuth App</code></p>
+</li>
+<li>
+<p>填写必要信息：<br>
+<code>Application name</code>填 Gitalk<br>
+<code>Homepage URL</code> 和 <code>Authorization callback URL</code> 填自己 Github Pages 的博客域名<br>
+（如：https://sheldie.github.io/）</p>
+</li>
+<li>
+<p>点击Register Application</p>
+</li>
+<li>
+<p>打开后能看到<code>Client ID</code>和<code>Client Secret</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>在Github新建一个 public 仓库，仓库名自取</p>
+</li>
+<li>
+<p>在<code>Gridea - 远程 - 评论配置</code>中选择 GiTalk + 显示评论<br>
+填入<code>Client ID</code>和<code>Client Secret</code><br>
+填入刚才创建的仓库名称<br>
+Owner填写自己Github的用户名</p>
+</li>
+</ol>
+<p>详细内容可以打开GiTalk Document查看<br>
+在Gridea中保存设置并同步后<br>
+打开任意文章页 - 使用Github登录后便可以进行评论<br>
+内容会出现在仓库的Issues中，可以进行修改和删除</p>
+<p>到这里就配置完成了😀</p>
 ]]></content>
     </entry>
     <entry>
