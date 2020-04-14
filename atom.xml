@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-13T14:11:32.372Z</updated>
+    <updated>2020-04-14T14:53:58.369Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -10,6 +10,85 @@
     <logo>https://sheldie.github.io/images/avatar.png</logo>
     <icon>https://sheldie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Python词频统计]]></title>
+        <id>https://sheldie.github.io/post/python词频统计/</id>
+        <link href="https://sheldie.github.io/post/python词频统计/">
+        </link>
+        <updated>2020-04-14T14:23:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>使用 Python 对 txt 文件做简单的词频统计</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>使用 Python 对 txt 文件做简单的词频统计</p>
+<!-- more -->
+<p>今天由于某些原因，实现了个简单的文本词频统计。</p>
+<h3 id="背景">背景</h3>
+<p>Python方面仍然还是入门水准，使用起来并不是很顺手。<br>
+正则表达式也不是很熟，学习了一些最基本的用法，后续会进行整理。</p>
+<h3 id="需求">需求</h3>
+<ol>
+<li>读入文件</li>
+<li>实现对文本中单词的词频统计</li>
+<li>将单词的出现位置输出到文件中</li>
+<li>根据单词词性，将 名词单复数 及 动词各种形式 看作同一个单词<code>（难）</code></li>
+</ol>
+<h3 id="思路">思路</h3>
+<p>首先读入文件。</p>
+<p>然后按行来读取文件，每行按正则表达式读取单词。<br>
+这里我用的是：<code>[a-zA-Z\']+</code><br>
+有些单词内可能有 ‘，所以把这个也写入正则表达式了。</p>
+<p>新建一个<strong>列表</strong>和一个<strong>字典</strong><br>
+直接将读取到的单词存入列表<br>
+把该单词的位置 以<strong>元组</strong>的形式 存入字典，字典值的数据类型为列表<br>
+元组格式为：<code>（行号，单词序数）</code>，如第1行第3个单词为 (0, 2)</p>
+<p>整个文本都读取完之后<br>
+利用Counter直接对列表中的单词词频进行统计<br>
+将字典中存储的位置输出到一个新的txt文件中</p>
+<h3 id="代码">代码</h3>
+<pre><code>def wordcount(filename):
+    fi = open(filename, &quot;r&quot;, encoding=&quot;utf-8-sig&quot;)
+    words_box = []
+    words_idx = {}
+
+    row = 0
+    for line in fi.readlines():
+        line = line.rstrip('\n').strip().lower()
+        ls = re.findall('[a-zA-Z\']+', line)
+
+        idx = 0
+        for word in ls:
+            if word not in words_idx:
+                words_idx[word] = []
+            words_idx[word].append((row, idx))
+            idx += 1
+
+        row += 1
+
+    counter = Counter(words_box)
+    for i in counter:
+        print('%s: %d' % (i, counter.get(i)))
+
+    fo = open(&quot;result.txt&quot;, 'w+', encoding=&quot;utf-8&quot;)
+    for word in sorted(words_idx):
+        op = word + ' ' + str(words_idx.get(word)) + '\n'
+        print(op, end=&quot;&quot;)
+        fo.write(op)
+</code></pre>
+<p>有个细节：打开文件后读取第一行时，最前面出现了<code>\ufeff</code>（字节顺序标记）</p>
+<p>找到的资料如下：<br>
+UTF-8以字节为编码单元，它的字节顺序在所有系统中都是一样的，没有字节序的问题，也因此它实际上并不需要BOM(“ByteOrder Mark”)。但是UTF-8 with BOM即utf-8-sig需要提供BOM。</p>
+<p>因此将编码格式改为<code>utf-8-sig</code>即可。</p>
+<hr>
+<p>目前来说除了第四条需求都已基本完成。</p>
+<p>关于词性判断，也就是第四条需求，感觉难度过大。<br>
+初步判断需要借助库，涉及NLP，有点超出我目前的学习范围，暂时弃坑。<br>
+网上搜索资料后，找到<strong>NLTK</strong>库。<br>
+观察了运行结果，应该是比较符合需求的。</p>
+<p>思路是：判断出单词词性后，对后缀进行调整或者删除，再进行统计或者匹配。<br>
+找了一篇相关的经验贴：<a href="https://www.jianshu.com/p/418cbdbf5e20">Python nltk 英文词性分析</a><br>
+例如：判断出该单词为NNS（名词复数），可以考虑删除 s 和 es 等后缀。<br>
+理论上来说是有可操作性的，以后若使用到NLTK会进行尝试。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[博客说明]]></title>
         <id>https://sheldie.github.io/post/博客说明/</id>
