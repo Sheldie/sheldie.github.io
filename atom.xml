@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-14T14:53:58.369Z</updated>
+    <updated>2020-04-16T15:11:56.326Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://sheldie.github.io/images/avatar.png</logo>
     <icon>https://sheldie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[动态规划]]></title>
+        <id>https://sheldie.github.io/post/动态规划/</id>
+        <link href="https://sheldie.github.io/post/动态规划/">
+        </link>
+        <updated>2020-04-16T07:30:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>总结动态规划问题的基本思路（待更新）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>总结动态规划问题的基本思路（待更新）</p>
+<!-- more -->
+<h3 id="基本思路">基本思路</h3>
+<p>图片转载自<a href="https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-dong-tai-gui-hua-by-liweiwei1419/">leetcode</a></p>
+<figure data-type="image" tabindex="1"><img src="https://sheldie.github.io/post-images/1587022409662.png" alt="动态规划问题的基本思路" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Python词频统计]]></title>
         <id>https://sheldie.github.io/post/python词频统计/</id>
