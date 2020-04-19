@@ -1,24 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://sheldie.github.io</id>
-    <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-19T08:58:28.625Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://sheldie.github.io"/>
-    <link rel="self" href="https://sheldie.github.io/atom.xml"/>
-    <subtitle>Shezzer的技术博客</subtitle>
-    <logo>https://sheldie.github.io/images/avatar.png</logo>
-    <icon>https://sheldie.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
-    <entry>
-        <title type="html"><![CDATA[操作系统知识点汇总]]></title>
-        <id>https://sheldie.github.io/post/操作系统知识点汇总/</id>
-        <link href="https://sheldie.github.io/post/操作系统知识点汇总/">
-        </link>
-        <updated>2020-04-17T02:00:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>总结一些操作系统的基本概念，持续整理更新。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>总结一些操作系统的基本概念，持续整理更新。</p>
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>操作系统知识点汇总 | Shezzer&#39;s Blog</title>
+<link rel="shortcut icon" href="https://sheldie.github.io/favicon.ico?v=1587286707199">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://sheldie.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Shezzer&#39;s Blog
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="http://www.shezzer.com/" class="menu gt-a-link" target="_blank">
+                            生活博客
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    操作系统知识点汇总
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-04-17 ·
+                    </time>
+                    
+                        <a href="https://sheldie.github.io/tag/SLcq3ecUT/" class="post-tags">
+                            # 操作系统
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>总结一些操作系统的基本概念，持续整理更新。</p>
 <!-- more -->
 <p>最近需要复习整理一下基础知识<br>
 以下内容为转载整理，主要为个人学习使用。</p>
@@ -364,325 +454,84 @@
 <li>https://www.cnblogs.com/zhuzhu2016/p/5804875.html</li>
 <li>http://c.biancheng.net/view/1175.html</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[动态规划]]></title>
-        <id>https://sheldie.github.io/post/动态规划/</id>
-        <link href="https://sheldie.github.io/post/动态规划/">
-        </link>
-        <updated>2020-04-16T07:30:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>总结动态规划问题的基本思路（待更新）</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>总结动态规划问题的基本思路（待更新）</p>
-<!-- more -->
-<h3 id="基本思路">基本思路</h3>
-<p>图片转载自<a href="https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-dong-tai-gui-hua-by-liweiwei1419/">leetcode</a></p>
-<figure data-type="image" tabindex="1"><img src="https://sheldie.github.io/post-images/1587022409662.png" alt="动态规划问题的基本思路" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python词频统计]]></title>
-        <id>https://sheldie.github.io/post/python词频统计/</id>
-        <link href="https://sheldie.github.io/post/python词频统计/">
-        </link>
-        <updated>2020-04-14T14:23:47.000Z</updated>
-        <summary type="html"><![CDATA[<p>使用 Python 对 txt 文件做简单的词频统计</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>使用 Python 对 txt 文件做简单的词频统计</p>
-<!-- more -->
-<p>今天由于某些原因，实现了个简单的文本词频统计。</p>
-<h3 id="背景">背景</h3>
-<p>Python方面仍然还是入门水准，使用起来并不是很顺手。<br>
-正则表达式也不是很熟，学习了一些最基本的用法，后续会进行整理。</p>
-<h3 id="需求">需求</h3>
-<ol>
-<li>读入文件</li>
-<li>实现对文本中单词的词频统计</li>
-<li>将单词的出现位置输出到文件中</li>
-<li>根据单词词性，将 名词单复数 及 动词各种形式 看作同一个单词<code>（难）</code></li>
-</ol>
-<h3 id="思路">思路</h3>
-<p>首先读入文件。</p>
-<p>然后按行来读取文件，每行按正则表达式读取单词。<br>
-这里我用的是：<code>[a-zA-Z\']+</code><br>
-有些单词内可能有 ‘，所以把这个也写入正则表达式了。</p>
-<p>新建一个<strong>列表</strong>和一个<strong>字典</strong><br>
-直接将读取到的单词存入列表<br>
-把该单词的位置 以<strong>元组</strong>的形式 存入字典，字典值的数据类型为列表<br>
-元组格式为：<code>（行号，单词序数）</code>，如第1行第3个单词为 (0, 2)</p>
-<p>整个文本都读取完之后<br>
-利用Counter直接对列表中的单词词频进行统计<br>
-将字典中存储的位置输出到一个新的txt文件中</p>
-<h3 id="代码">代码</h3>
-<pre><code>def wordcount(filename):
-    fi = open(filename, &quot;r&quot;, encoding=&quot;utf-8-sig&quot;)
-    words_box = []
-    words_idx = {}
 
-    row = 0
-    for line in fi.readlines():
-        line = line.rstrip('\n').strip().lower()
-        ls = re.findall('[a-zA-Z\']+', line)
+                </div>
+            </article>
+        </div>
 
-        idx = 0
-        for word in ls:
-            if word not in words_idx:
-                words_idx[word] = []
-            words_idx[word].append((row, idx))
-            idx += 1
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://sheldie.github.io/post/动态规划/" class="post-title gt-a-link">
+                    动态规划
+                </a>
+            </div>
+        
 
-        row += 1
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-    counter = Counter(words_box)
-    for i in counter:
-        print('%s: %d' % (i, counter.get(i)))
+<div id="gitalk-container"></div>
 
-    fo = open(&quot;result.txt&quot;, 'w+', encoding=&quot;utf-8&quot;)
-    for word in sorted(words_idx):
-        op = word + ' ' + str(words_idx.get(word)) + '\n'
-        print(op, end=&quot;&quot;)
-        fo.write(op)
-</code></pre>
-<p>有个细节：打开文件后读取第一行时，最前面出现了<code>\ufeff</code>（字节顺序标记）</p>
-<p>找到的资料如下：<br>
-UTF-8以字节为编码单元，它的字节顺序在所有系统中都是一样的，没有字节序的问题，也因此它实际上并不需要BOM(“ByteOrder Mark”)。但是UTF-8 with BOM即utf-8-sig需要提供BOM。</p>
-<p>因此将编码格式改为<code>utf-8-sig</code>即可。</p>
-<hr>
-<p>目前来说除了第四条需求都已基本完成。</p>
-<p>关于词性判断，也就是第四条需求，感觉难度过大。<br>
-初步判断需要借助库，涉及NLP，有点超出我目前的学习范围，暂时弃坑。<br>
-网上搜索资料后，找到<strong>NLTK</strong>库。<br>
-观察了运行结果，应该是比较符合需求的。</p>
-<p>思路是：判断出单词词性后，对后缀进行调整或者删除，再进行统计或者匹配。<br>
-找了一篇相关的经验贴：<a href="https://www.jianshu.com/p/418cbdbf5e20">Python nltk 英文词性分析</a><br>
-例如：判断出该单词为NNS（名词复数），可以考虑删除 s 和 es 等后缀。<br>
-理论上来说是有可操作性的，以后若使用到NLTK会进行尝试。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[博客说明]]></title>
-        <id>https://sheldie.github.io/post/博客说明/</id>
-        <link href="https://sheldie.github.io/post/博客说明/">
-        </link>
-        <updated>2020-04-13T13:56:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>本博客新建于2020年4月 🙄<br>
-主要用于个人学习 🚀<br>
-以前的内容就不搬过来了<br>
-之后会陆续更新的~</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>本博客新建于2020年4月 🙄<br>
-主要用于个人学习 🚀<br>
-以前的内容就不搬过来了<br>
-之后会陆续更新的~</p>
-<!-- more -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[分布式与集群]]></title>
-        <id>https://sheldie.github.io/post/分布式与集群/</id>
-        <link href="https://sheldie.github.io/post/分布式与集群/">
-        </link>
-        <updated>2020-04-12T00:00:00.000Z</updated>
-        <content type="html"><![CDATA[<p>转载自：</p>
-<ol>
-<li>
-<p>分布式与集群的区别是什么？ - 大闲人柴毛毛的回答 - 知乎<br>
-https://www.zhihu.com/question/20004877/answer/282033178</p>
-</li>
-<li>
-<p>分布式与集群的区别是什么？ - 灵剑的回答 - 知乎<br>
-https://www.zhihu.com/question/20004877/answer/568581790</p>
-</li>
-</ol>
-<h3 id="单机结构"><strong>单机结构</strong></h3>
-<p>我想大家最最最熟悉的就是单机结构，一个系统业务量很小的时候所有的代码都放在一个项目中就好了，然后这个项目部署在一台服务器上就好了。整个项目所有的服务都由这台服务器提供。这就是单机结构。</p>
-<p>那么，单机结构有啥缺点呢？我想缺点是显而易见的，单机的处理能力毕竟是有限的，当你的业务增长到一定程度的时候，单机的硬件资源将无法满足你的业务需求。此时便出现了集群模式，往下接着看。</p>
-<h3 id="集群结构"><strong>集群结构</strong></h3>
-<p>单机处理到达瓶颈的时候，你就把单机复制几份，这样就构成了一个“集群”。集群中每台服务器就叫做这个集群的一个“节点”，所有节点构成了一个集群。每个节点都提供相同的服务，那么这样系统的处理能力就相当于提升了好几倍（有几个节点就相当于提升了这么多倍）。</p>
-<p>但问题是用户的请求究竟由哪个节点来处理呢？最好能够让此时此刻负载较小的节点来处理，这样使得每个节点的压力都比较平均。要实现这个功能，就需要在所有节点之前增加一个“调度者”的角色，用户的所有请求都先交给它，然后它根据当前所有节点的负载情况，决定将这个请求交给哪个节点处理。这个“调度者”有个牛逼了名字——负载均衡服务器。</p>
-<p>集群结构的好处就是系统扩展非常容易。如果随着你们系统业务的发展，当前的系统又支撑不住了，那么给这个集群再增加节点就行了。但是，当你的业务发展到一定程度的时候，你会发现一个问题——无论怎么增加节点，貌似整个集群性能的提升效果并不明显了。这时候，你就需要使用微服务结构了。</p>
-<h3 id="分布式结构"><strong>分布式结构</strong></h3>
-<p>先来对前面的知识点做个总结。</p>
-<p>从单机结构到集群结构，你的代码基本无需要作任何修改，你要做的仅仅是多部署几台服务器，每台服务器上运行相同的代码就行了。但是，当你要从集群结构演进到微服务结构的时候，之前的那套代码就需要发生较大的改动了。所以对于新系统我们建议，系统设计之初就采用微服务架构，这样后期运维的成本更低。但如果一套老系统需要升级成微服务结构的话，那就得对代码大动干戈了。所以，对于老系统而言，究竟是继续保持集群模式，还是升级成微服务架构，这需要你们的架构师深思熟虑、权衡投入产出比。</p>
-<p>OK，下面开始介绍所谓的分布式结构。</p>
-<p>分布式结构就是将一个完整的系统，按照业务功能，拆分成一个个独立的子系统，在分布式结构中，每个子系统就被称为“服务”。这些子系统能够独立运行在web容器中，它们之间通过RPC方式通信。</p>
-<p>举个例子，假设需要开发一个在线商城。按照微服务的思想，我们需要按照功能模块拆分成多个独立的服务，如：用户服务、产品服务、订单服务、后台管理服务、数据分析服务等等。这一个个服务都是一个个独立的项目，可以独立运行。如果服务之间有依赖关系，那么通过RPC方式调用。</p>
-<p>这样的好处有很多：</p>
-<ol>
-<li>系统之间的耦合度大大降低，可以独立开发、独立部署、独立测试，系统与系统之间的边界非常明确，排错也变得相当容易，开发效率大大提升。</li>
-<li>系统之间的耦合度降低，从而系统更易于扩展。我们可以针对性地扩展某些服务。假设这个商城要搞一次大促，下单量可能会大大提升，因此我们可以针对性地提升订单系统、产品系统的节点数量，而对于后台管理系统、数据分析系统而言，节点数量维持原有水平即可。</li>
-<li>服务的复用性更高。比如，当我们将用户系统作为单独的服务后，该公司所有的产品都可以使用该系统作为用户系统，无需重复开发。</li>
-</ol>
-<h3 id="补充">补充</h3>
-<p>其实分布式不一定就是不同的组件，同一个组件也可以，关键在于是否通过交换信息的方式进行协作。比如说Zookeeper的节点都是对等的，但它自己就构成一个分布式系统。</p>
-<p>也就是说，分布式是指通过网络连接的多个组件，通过交换信息协作而形成的系统。而集群，是指同一种组件的多个实例，形成的逻辑上的整体。</p>
-<p>可以看出这两个概念并不完全冲突，分布式系统也可以是一个集群，例子就是前面说的zookeeper等，它的特征是服务之间会互相通信协作。是分布式系统不是集群的情况，就是多个不同组件构成的系统；是集群不是分布式系统的情况，比如多个经过负载均衡的HTTP服务器，它们之间不会互相通信，如果不带上负载均衡的部分的话，一般不叫做分布式系统。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Win10安装PyGraphviz]]></title>
-        <id>https://sheldie.github.io/post/Win10安装PyGraphviz/</id>
-        <link href="https://sheldie.github.io/post/Win10安装PyGraphviz/">
-        </link>
-        <updated>2020-04-02T00:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="正确安装方法">正确安装方法</h4>
-<p>提前安装好graphviz并配置环境变量<br>
-然后在：https://github.com/CristiFati/Prebuilt-Binaries<br>
-下载对应py版本和系统的版本<br>
-到目录中执行<code>pip install pygraphviz-1.5-cp37-cp37m-win_amd64.whl</code></p>
-<h4 id="以下为个人经历">以下为个人经历</h4>
-<p>anaconda的环境为python3.7，<br>
-由于需要安装Causalnex的关系，<br>
-需要使用到pygraphviz，然而安装的时候发现与各种库的版本有冲突。。</p>
-<p>于是新建项目和虚拟环境<br>
-重新尝试<code>pip install graphviz</code><br>
-报错：Microsoft Visual C++ 14.0 is required.<br>
-（新电脑没安装Visual Studio)</p>
-<p>安装重启过后，<br>
-报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
-<p>在网上寻找解决方案，<br>
-尝试直接下载whl文件并安装：https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygraphviz<br>
-但是发现没有对应版本，只有python3.4的版本。<br>
-强行下载尝试，报错：not a supported wheel</p>
-<p>尝试使用conda新建一个python3.4的虚拟环境<br>
-倒腾半天，发现pycharm已不支持python3.4<br>
-于是删除</p>
-<p>然后尝试直接下载源代码并安装：https://github.com/pygraphviz/pygraphviz<br>
-果然还是报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
-<p>最后在网上找到了该库的编译版本...</p>
-<p>吐了。</p>
-<p>现正学习并尝试使用Casualnex...</p>
-<h5 id="2020-04-04-更新">2020-04-04 更新：</h5>
-<p>尝试使用CausalNex过后，发现这个库应该是还在开发中。。<br>
-使用起来挺不稳定的，近一个月还更改过集成的库<br>
-本来用的是networkx，后来换成pygraphviz的</p>
-<p>安装的时候就出现了版本不兼容的问题<br>
-运行示例代码就出现了很多问题，报错也极其诡异<br>
-粗略判断还是版本问题</p>
-<p>本人水平有限，最近精力也有限...<br>
-机器学习这方面基本是零基础<br>
-最近也是在网上找些样例在学习<br>
-主要还是把重点放在比较基础的操作上吧<br>
-有时间和条件多了解一些相关原理</p>
-<p>因为了解不够也没法很好地提出问题<br>
-所以这个库还是暂时弃用吧<br>
-会继续关注 希望能逐步完善好~</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[配置GiTalk]]></title>
-        <id>https://sheldie.github.io/post/配置GiTalk/</id>
-        <link href="https://sheldie.github.io/post/配置GiTalk/">
-        </link>
-        <updated>2020-01-01T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>😃 给博客开放一下评论功能~</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>😃 给博客开放一下评论功能~</p>
-<!-- more -->
-<ol>
-<li>
-<p>首先在Github中进行以下设置：</p>
-<ul>
-<li>
-<p>打开<code>Github - Settings - Developer Settings - OAuth Apps - New OAuth App</code></p>
-</li>
-<li>
-<p>填写必要信息：<br>
-<code>Application name</code>填 Gitalk<br>
-<code>Homepage URL</code> 和 <code>Authorization callback URL</code> 填自己 Github Pages 的博客域名<br>
-（如：https://sheldie.github.io/）</p>
-</li>
-<li>
-<p>点击Register Application</p>
-</li>
-<li>
-<p>打开后能看到<code>Client ID</code>和<code>Client Secret</code></p>
-</li>
-</ul>
-</li>
-<li>
-<p>在Github新建一个 public 仓库，仓库名自取</p>
-</li>
-<li>
-<p>在<code>Gridea - 远程 - 评论配置</code>中选择 GiTalk + 显示评论<br>
-填入<code>Client ID</code>和<code>Client Secret</code><br>
-填入刚才创建的仓库名称<br>
-Owner填写自己Github的用户名</p>
-</li>
-</ol>
-<p>详细内容可以打开GiTalk Document查看<br>
-在Gridea中保存设置并同步后<br>
-打开任意文章页 - 使用Github登录后便可以进行评论<br>
-内容会出现在仓库的Issues中，可以进行修改和删除</p>
-<p>到这里就配置完成了😀</p>
-<hr>
-<p>2020-04-13:</p>
-<p>总结两个问题：</p>
-<ol>
-<li>
-<blockquote>
-<p>未找到相关的 <a href="https://github.com/Sheldie/sheldie.GiTalk/issues">Issues</a> 进行评论<br>
-请联系 @Sheldie 初始化创建</p>
-</blockquote>
-<p>发布文章后，打开对应文章页登录Github账号，会自动创建Issue<br>
-否则无法进行评论</p>
-</li>
-<li>
-<p>部分文章出现 Error: Validation Failed.</p>
-<p>原因是某些文章标题较长，自动创建Issue时，超出了50字符限制</p>
-<p>解决方法：打开所用主题的源代码，找到相关部分</p>
-<pre><code>  var gitalk = new Gitalk({
-    clientID: '&lt;%= commentSetting.gitalkSetting.clientId %&gt;',
-    clientSecret: '&lt;%= commentSetting.gitalkSetting.clientSecret %&gt;',
-    repo: '&lt;%= commentSetting.gitalkSetting.repository %&gt;',
-    owner: '&lt;%= commentSetting.gitalkSetting.owner %&gt;',
-    admin: ['&lt;%= commentSetting.gitalkSetting.owner %&gt;'],
-    id: location.pathname,      // Ensure uniqueness and length less than 50
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '0234359455b34f62ff4c',
+    clientSecret: 'f493678fe574c168c8d416f30696a9324b3c1bfd',
+    repo: 'sheldie.GiTalk',
+    owner: 'Sheldie',
+    admin: ['Sheldie'],
+    id: decodeURI(location.pathname),      // Ensure uniqueness and length less than 50
     distractionFreeMode: false  // Facebook-like distraction free mode
   })
-</code></pre>
-<p>可以看到pure主题也有提示<br>
-id 需要保证长度和唯一性<br>
-将<code>id: location.pathname</code><br>
-改为<code>id: decodeURI(location.pathname)</code><br>
-解码后长度会变短</p>
-<p>同样也可以转成 md5<br>
-相关问题可参考：https://github.com/gitalk/gitalk/issues/102</p>
-</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://sheldie.github.io/post/hello-gridea/</id>
-        <link href="https://sheldie.github.io/post/hello-gridea/">
-        </link>
-        <updated>2019-12-31T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
-]]></content>
-    </entry>
-</feed>
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">Shezzer的技术博客</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/Sheldie" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://sheldie.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>
