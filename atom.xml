@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-19T08:58:28.625Z</updated>
+    <updated>2020-04-19T11:20:08.648Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -116,7 +116,8 @@
 <h5 id="并行与并发的概念">并行与并发的概念</h5>
 <ul>
 <li>并行(parallel)：指在同一时刻，有多条指令在多个处理器上同时执行。所以无论从微观还是从宏观来看，二者都是一起执行的。</li>
-<li>并发(concurrency)：指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行的，只是把时间分成若干段，使多个进程快速交替的执行。</li>
+<li>并发(concurrency)：指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行的，只是把时间分成若干段，使多个进程快速交替的执行。<br>
+<img src="https://sheldie.github.io/post-images/1587295176243.jpg" alt="并发与并行" loading="lazy"></li>
 </ul>
 <h5 id="程序并发执行的特点">程序并发执行的特点</h5>
 <ul>
@@ -218,8 +219,9 @@
 <li><strong>等待状态（Wait / Blocked）</strong>：若一进程正在等待某一事件发生（如等待输入输出工作完成），这时，即使给它CPU，它也无法运行，称该进程处于等待状态、阻塞、 睡眠、封锁状态。</li>
 </ul>
 <blockquote>
-<p>进程状态模型</p>
-<p>运行：进程当前处于运行状态。<br>
+<p>进程状态模型<br>
+<img src="https://sheldie.github.io/post-images/1587295018931.png" alt="进程状态模型" loading="lazy"><br>
+运行：进程当前处于运行状态。<br>
 就绪；进程已准备好运行。<br>
 阻塞；进程等待某些事件发生（如I/O操作）后才能运行。<br>
 创建：进程刚产生，但还未被操作系统提交到可运行进程池中。<br>
@@ -230,8 +232,10 @@
 <p>由于I/O操作比CPU计算慢得多，故常会出现内存中所有进程都等待I/O的现象。即使运行多个程序，处理器在大多数时间仍处于空闲状态。为此可采用交换方法，将内存中的一部分进程转移到磁盘中。在进程行为模式中需增加一个新的挂起状态，当内存所有进程阻塞时，操作系统可将一进程置为挂起状态并交换到磁盘，再调入另一进程执行。</p>
 <p>挂起状态与原有的阻塞和就绪状态结合为<strong>阻塞挂起</strong>状态和<strong>就绪挂起</strong>状态。</p>
 <blockquote>
-<p>带有一个挂起状态</p>
-<p>带有两个挂起状态</p>
+<p>带有一个挂起状态<br>
+<img src="https://sheldie.github.io/post-images/1587295052118.png" alt="带有一个挂起状态" loading="lazy"><br>
+带有两个挂起状态<br>
+<img src="https://sheldie.github.io/post-images/1587295122555.png" alt="带有两个挂起状态" loading="lazy"></p>
 </blockquote>
 <h4 id="进程控制块">进程控制块</h4>
 <h5 id="进程控制块的概念">进程控制块的概念</h5>
