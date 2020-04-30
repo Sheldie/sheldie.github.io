@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-04-28T08:48:50.410Z</updated>
+    <updated>2020-04-30T05:02:12.221Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -10,6 +10,33 @@
     <logo>https://sheldie.github.io/images/avatar.png</logo>
     <icon>https://sheldie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[MySQL相关知识点]]></title>
+        <id>https://sheldie.github.io/post/MySQL相关知识点/</id>
+        <link href="https://sheldie.github.io/post/MySQL相关知识点/">
+        </link>
+        <updated>2020-04-30T05:00:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>数据库相关知识点，持续更新。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>数据库相关知识点，持续更新。</p>
+<!-- more -->
+<h4 id="数据库字段设计">数据库字段设计</h4>
+<h5 id="为什么要一定要设置主键">为什么要一定要设置主键?</h5>
+<p>其实这个不是一定的，有些场景下，小系统或者没什么用的表，不设置主键也没关系，mysql最好是用自增主键，主要是以下两个原因：如果定义了主键，那么InnoDB会选择主键作为聚集索引、如果没有显式定义主键，则innodb 会选择第一个不包含有NULL值的唯一索引作为主键索引、如果也没有这样的唯一索引，则innodb 会选择内置6字节长的ROWID作为隐含的聚集索引。所以，反正都要生成一个主键，那你还不如自己指定一个主键，提高查询效率！</p>
+<h5 id="主键是用自增还是uuid">主键是用自增还是UUID?</h5>
+<p>最好是用自增主键，主要是以下两个原因：</p>
+<ol>
+<li>如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会自动开辟一个新的页。</li>
+<li>如果使用非自增主键（如uuid），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到索引页的随机某个位置，此时MySQL为了将新记录插到合适位置而移动数据，甚至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销，同时频繁的移动、分页操作造成索引碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE来重建表并优化填充页面。</li>
+</ol>
+<p>不过，也不是所有的场景下都得使用自增主键，可能场景下，主键必须自己生成，不在乎那些性能的开销。那也没有问题。</p>
+<h5 id="自增主键用完了怎么办">自增主键用完了怎么办?</h5>
+<p>在mysql中，Int整型的范围（-2147483648~2147483648），约20亿！因此不用考虑自增ID达到最大值这个问题。而且数据达到千万级的时候就应该考虑分库分表了。</p>
+<hr>
+<p>部分转载自：</p>
+<p>https://zhuanlan.zhihu.com/p/116866170</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[KNN算法]]></title>
         <id>https://sheldie.github.io/post/KNN算法/</id>

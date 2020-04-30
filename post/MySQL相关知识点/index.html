@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Shezzer&#39;s Blog</title>
+<title>MySQL相关知识点 | Shezzer&#39;s Blog</title>
 <link rel="shortcut icon" href="https://sheldie.github.io/favicon.ico?v=1588222887979">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sheldie.github.io/styles/main.css">
@@ -30,11 +30,11 @@
 
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -91,58 +91,89 @@
         </div>
     </div>
 </nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    MySQL相关知识点
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-04-30 ·
+                    </time>
+                    
+                        <a href="https://sheldie.github.io/tag/D0G4mhnWB/" class="post-tags">
+                            # MySQL
+                        </a>
+                    
+                        <a href="https://sheldie.github.io/tag/39-RriuXCp/" class="post-tags">
+                            # 数据库
+                        </a>
+                    
+                        <a href="https://sheldie.github.io/tag/YIg8vfxyG6/" class="post-tags">
+                            # 面试
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>数据库相关知识点，持续更新。</p>
+<!-- more -->
+<h4 id="数据库字段设计">数据库字段设计</h4>
+<h5 id="为什么要一定要设置主键">为什么要一定要设置主键?</h5>
+<p>其实这个不是一定的，有些场景下，小系统或者没什么用的表，不设置主键也没关系，mysql最好是用自增主键，主要是以下两个原因：如果定义了主键，那么InnoDB会选择主键作为聚集索引、如果没有显式定义主键，则innodb 会选择第一个不包含有NULL值的唯一索引作为主键索引、如果也没有这样的唯一索引，则innodb 会选择内置6字节长的ROWID作为隐含的聚集索引。所以，反正都要生成一个主键，那你还不如自己指定一个主键，提高查询效率！</p>
+<h5 id="主键是用自增还是uuid">主键是用自增还是UUID?</h5>
+<p>最好是用自增主键，主要是以下两个原因：</p>
+<ol>
+<li>如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会自动开辟一个新的页。</li>
+<li>如果使用非自增主键（如uuid），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到索引页的随机某个位置，此时MySQL为了将新记录插到合适位置而移动数据，甚至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销，同时频繁的移动、分页操作造成索引碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE来重建表并优化填充页面。</li>
+</ol>
+<p>不过，也不是所有的场景下都得使用自增主键，可能场景下，主键必须自己生成，不在乎那些性能的开销。那也没有问题。</p>
+<h5 id="自增主键用完了怎么办">自增主键用完了怎么办?</h5>
+<p>在mysql中，Int整型的范围（-2147483648~2147483648），约20亿！因此不用考虑自增ID达到最大值这个问题。而且数据达到千万级的时候就应该考虑分库分表了。</p>
+<hr>
+<p>部分转载自：</p>
+<p>https://zhuanlan.zhihu.com/p/116866170</p>
 
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/D0G4mhnWB/">#MySQL</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/39-RriuXCp/">#数据库</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/YIg8vfxyG6/">#面试</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/5mBSdwpsI/">#机器学习</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/M0tZm1b-ak/">#KNN</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/SLcq3ecUT/">#操作系统</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/VTO-cJzUM/">#动态规划</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/NMU90cUr64/">#dp</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/Izp11Dymm/">#python</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/A5qNnlIzCh/">#词频统计</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/FKvDqWWHY/">#分布式</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/x5x4ltrBSh/">#集群</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/JQrhDzJB0v/">#hadoop</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/KCPGu6P82/">#PyGraphviz</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/vtWmVyKBF/">#GiTalk</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://sheldie.github.io/tag/HJRsprDoD/">#Gridea</a>
-            
+                </div>
+            </article>
         </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://sheldie.github.io/post/KNN算法/" class="post-title gt-a-link">
+                    KNN算法
+                </a>
+            </div>
+        
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '0234359455b34f62ff4c',
+    clientSecret: 'f493678fe574c168c8d416f30696a9324b3c1bfd',
+    repo: 'sheldie.GiTalk',
+    owner: 'Sheldie',
+    admin: ['Sheldie'],
+    id: decodeURI(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">Shezzer的技术博客</div>
@@ -177,6 +208,7 @@
 <script>
     hljs.initHighlightingOnLoad()
 </script>
+
 
     </div>
 </div>
