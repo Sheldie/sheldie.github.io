@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>MySQL相关知识点 | Shezzer&#39;s Blog</title>
-<link rel="shortcut icon" href="https://sheldie.github.io/favicon.ico?v=1588222887979">
+<link rel="shortcut icon" href="https://sheldie.github.io/favicon.ico?v=1588336514732">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sheldie.github.io/styles/main.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -118,18 +118,205 @@
                 <div class="post-content">
                     <p>数据库相关知识点，持续更新。</p>
 <!-- more -->
-<h4 id="数据库字段设计">数据库字段设计</h4>
-<h5 id="为什么要一定要设置主键">为什么要一定要设置主键?</h5>
-<p>其实这个不是一定的，有些场景下，小系统或者没什么用的表，不设置主键也没关系，mysql最好是用自增主键，主要是以下两个原因：如果定义了主键，那么InnoDB会选择主键作为聚集索引、如果没有显式定义主键，则innodb 会选择第一个不包含有NULL值的唯一索引作为主键索引、如果也没有这样的唯一索引，则innodb 会选择内置6字节长的ROWID作为隐含的聚集索引。所以，反正都要生成一个主键，那你还不如自己指定一个主键，提高查询效率！</p>
-<h5 id="主键是用自增还是uuid">主键是用自增还是UUID?</h5>
+<h3 id="数据库字段设计">数据库字段设计</h3>
+<h4 id="为什么要一定要设置主键">为什么要一定要设置主键?</h4>
+<p>其实这个不是一定的，有些场景下，小系统或者没什么用的表，不设置主键也没关系，mysql最好是用自增主键，主要是以下两个原因：如果定义了主键，那么InnoDB<strong>会选择主键作为聚集索引</strong>、如果没有显式定义主键，则innodb 会选择第一个不包含有NULL值的唯一索引作为主键索引、如果也没有这样的唯一索引，则innodb 会选择内置6字节长的ROWID作为隐含的聚集索引。所以，反正都要生成一个主键，那你还不如自己指定一个主键，提高查询效率！</p>
+<h4 id="主键是用自增还是uuid">主键是用自增还是UUID?</h4>
 <p>最好是用自增主键，主要是以下两个原因：</p>
 <ol>
-<li>如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会自动开辟一个新的页。</li>
-<li>如果使用非自增主键（如uuid），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到索引页的随机某个位置，此时MySQL为了将新记录插到合适位置而移动数据，甚至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销，同时频繁的移动、分页操作造成索引碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE来重建表并优化填充页面。</li>
+<li>如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会<strong>自动开辟一个新的页</strong>。</li>
+<li>如果使用非自增主键（如uuid），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到索引页的随机某个位置，此时MySQL为了将新记录插到合适位置而移动数据，甚至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多<strong>开销</strong>，同时频繁的移动、分页操作造成索引碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE来重建表并优化填充页面。</li>
 </ol>
 <p>不过，也不是所有的场景下都得使用自增主键，可能场景下，主键必须自己生成，不在乎那些性能的开销。那也没有问题。</p>
-<h5 id="自增主键用完了怎么办">自增主键用完了怎么办?</h5>
+<h4 id="自增主键用完了怎么办">自增主键用完了怎么办?</h4>
 <p>在mysql中，Int整型的范围（-2147483648~2147483648），约20亿！因此不用考虑自增ID达到最大值这个问题。而且数据达到千万级的时候就应该考虑分库分表了。</p>
+<h4 id="主键为什么不推荐有业务含义">主键为什么不推荐有业务含义?</h4>
+<p>最好是主键是无意义的自增ID，然后另外创建一个业务主键ID，因为任何有业务含义的列都有改变的可能性,主键一旦带上了业务含义，那么主键就有可能发生变更。主键一旦发生变更，该数据在磁盘上的存储位置就会发生变更，有可能会引发<strong>页分裂</strong>，产生空间碎片。</p>
+<p>还有就是，带有业务含义的主键，不一定是顺序自增的。那么就会导致数据的插入顺序，并不能保证后面插入数据的主键一定比前面的数据大。如果出现了，后面插入数据的主键比前面的小，就有可能引发页分裂，产生空间碎片。</p>
+<h4 id="货币字段用什么类型">货币字段用什么类型?</h4>
+<p>货币字段一般都用Decimal类型，<br>
+float和double是以二进制存储的，数据大的时候，可能存在误差。</p>
+<h4 id="时间字段用什么类型">时间字段用什么类型?</h4>
+<p>这个看具体情况和实际场景，timestamp ，datatime ，bigint 都行！</p>
+<p>timestamp，该类型是四个字节的整数，它能表示的时间范围为1970-01-01 08:00:01到2038-01-19 11:14:07。2038年以后的时间，是无法用timestamp类型存储的。<br>
+但是它有一个优势，<strong>timestamp类型是带有时区信息的</strong>。一旦你系统中的时区发生改变，例如你修改了时区，该字段的值会自动变更。这个特性用来做一些国际化大项目，跨时区的应用时，特别注意！</p>
+<p>datetime，占用8个字节，它存储的时间范围为1000-01-01 00:00:00 ~ 9999-12-31 23:59:59。显然，存储时间范围更大。但是它坑的地方在于，它存储的是时间绝对值，<strong>不带有时区信息</strong>。如果你改变数据库的时区，该项的值不会自己发生变更！</p>
+<p>bigint，也是8个字节，自己维护一个时间戳，查询效率高，不过数据写入，显示都需要做<strong>转换</strong>。这种存储方式的具有 Timestamp 类型的所具有一些优点，并且使用它的进行日期排序以及对比等操作的效率会更高，跨系统也很方便，毕竟只是存放的数值。缺点也很明显，就是<strong>数据的可读性太差</strong>了，你无法直观的看到具体时间。</p>
+<h4 id="为什么不直接存储图片-音频-视频等大容量内容">为什么不直接存储图片、音频、视频等大容量内容?</h4>
+<p>我们在实际应用中，都是文件形式存储的。mysql中，只存文件的存放路径。虽然mysql中blob类型可以用来存放大容量文件，但是，我们在生产中，基本不用！</p>
+<p>主要有如下几个原因：</p>
+<ul>
+<li>Mysql<strong>内存临时表</strong>不支持TEXT、BLOB这样的大数据类型，如果查询中包含这样的数据，查询效率会非常慢。</li>
+<li>数据库特别大，内存占用高，维护也比较麻烦。</li>
+<li>binlog太大，如果是主从同步的架构，会导致主从同步效率问题！</li>
+</ul>
+<p>因此，不推荐使用blob等类型！</p>
+<h4 id="表中有大字段x例如text类型且字段x不会经常更新以读为主那么是拆成子表好还是放一起好">表中有大字段X(例如：text类型)，且字段X不会经常更新，以读为主，那么是拆成子表好？还是放一起好？</h4>
+<p>其实各有利弊，拆开带来的问题：连接消耗；不拆可能带来的问题：查询性能，所以要看你的实际情况，如果表数据量比较大，最好还是拆开为好。这样查询速度更快。</p>
+<h4 id="字段为什么要定义为not-null">字段为什么要定义为NOT NULL?</h4>
+<p>一般情况，都会设置一个默认值，不会出现字段里面有null，又有空的情况。主要有以下几个原因：</p>
+<ol>
+<li>
+<p>索引性能不好，Mysql难以优化引用可空列查询，它会使索引、索引统计和值更加复杂。可空列需要更多的存储空间，还需要mysql内部进行特殊处理。可空列被索引后，每条记录都需要一个额外的字节，还能导致MYisam 中固定大小的索引变成可变大小的索引。</p>
+</li>
+<li>
+<p>如果某列存在null的情况，可能导致count() 等函数执行不对的情况。</p>
+</li>
+<li>
+<p>sql 语句写着也麻烦，既要判断是否为空，又要判断是否为null等。</p>
+</li>
+</ol>
+<h3 id="数据库查询优化">数据库查询优化</h3>
+<h4 id="where执行顺序是怎样的">where执行顺序是怎样的？</h4>
+<p>where 条件从左往右执行的，在数据量小的时候不用考虑，但数据量多的时候要考虑条件的先后顺序，此时应遵守一个原则：排除越多的条件放在第一个。</p>
+<h4 id="应该在这些列上创建索引">应该在这些列上创建索引</h4>
+<p>在<strong>经常需要搜索</strong>的列上，可以加快搜索的速度；在作为<strong>主键</strong>的列上，强制该列的唯一性和组织表中数据的排列结构；在经常用在<strong>连接</strong>的列上，这些列主要是一些外键，可以加快连接的速度；在经常需要根据<strong>范围</strong>进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；在经常需要<strong>排序</strong>的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；在经常使用在<strong>WHERE子句</strong>中的列上面创建索引，加快条件的判断速度。</p>
+<h4 id="mysql联合索引">mysql联合索引</h4>
+<p>联合索引是两个或更多个列上的索引。对于联合索引:Mysql从左到右的使用索引中的字段，一个查询可以只使用索引中的一部分，但只能是<strong>最左侧部分</strong>。例如索引是key index (a,b,c). 可以支持a 、 a,b 、 a,b,c 3种组合进行查找，但不支持 b,c进行查找 .当最左侧字段是常量引用时，索引就十分有效。<br>
+利用索引中的附加列，您可以缩小搜索的范围，但使用一个具有两列的索引 不同于使用两个单独的索引。复合索引的结构与电话簿类似，人名由姓和名构成，电话簿首先按姓氏对进行排序，然后按名字对有相同姓氏的人进行排序。如果您知 道姓，电话簿将非常有用；如果您知道姓和名，电话簿则更为有用，但如果您只知道名不姓，电话簿将没有用处。</p>
+<h4 id="什么是最左前缀原则">什么是最左前缀原则？</h4>
+<p>最左前缀原则指的是，如果查询的时候查询条件精确匹配索引的左边连续一列或几列，则此列就可以被用到。</p>
+<pre><code class="language-sql">select * from user where name=xx and city=xx ; ／／可以命中索引
+select * from user where name=xx ; // 可以命中索引
+select * from user where city=xx ; // 无法命中索引
+</code></pre>
+<p>这里需要注意的是，查询的时候如果两个条件都用上了，但是顺序不同，如 city= xx and name ＝xx，那么现在的查询引擎会<strong>自动优化</strong>为匹配联合索引的顺序，这样是能够命中索引的。</p>
+<p>由于最左前缀原则，在创建联合索引时，索引字段的顺序需要考虑字段值去重之后的个数，较多的放前面。ORDER BY子句也遵循此规则。</p>
+<h4 id="什么情况下应不建或少建索引">什么情况下应不建或少建索引</h4>
+<p>表记录太少<br>
+经常插入、删除、修改的表<br>
+<strong>数据重复且分布平均</strong>的表字段，假如一个表有10万行记录，有一个字段A只有T和F两种值，且每个值的分布概率大约为50%，那么对这种表A字段建索引一般不会提高数据库的查询速度。<br>
+经常和主字段一块查询但主字段索引值比较多的表字段</p>
+<h4 id="mysql数据库cpu飙升到100的话怎么处理">MySQL数据库cpu飙升到100%的话怎么处理？</h4>
+<ol>
+<li>列出所有进程 show process list 观察所有进程 多秒没有状态变化的(干掉)</li>
+<li>查看<strong>慢查询</strong>，找出执行时间长的sql；explain分析sql是否走<strong>索引</strong>，<strong>sql优化</strong>；</li>
+<li>检查其他子系统是否正常，是否<strong>缓存失效</strong>引起，需要查看buffer命中率；</li>
+</ol>
+<h4 id="mysql中表锁和行锁的区别">mysql中表锁和行锁的区别</h4>
+<p>Mysql有很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁；这些锁统称为悲观锁(Pessimistic Lock)</p>
+<p><strong>行锁</strong><br>
+特点：锁的粒度小，发生锁冲突的概率低、处理并发的能力强；开销大、加锁慢、会出现死锁<br>
+加锁的方式：自动加锁。对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及数据集加<strong>排他锁</strong>；对于普通SELECT语句，InnoDB不会加任何锁。</p>
+<p><strong>表锁</strong><br>
+特点：开销小、加锁快、无死锁；锁粒度大，发生锁冲突的概率高，高并发下性能低<br>
+加锁的方式：自动加锁。查询操作（SELECT），会自动给涉及的所有表加<strong>读锁</strong>，更新操作（UPDATE、DELETE、INSERT），会自动给涉及的表加<strong>写锁</strong>。</p>
+<h4 id="mysql主键索引和普通索引之间的区别是什么">mysql主键索引和普通索引之间的区别是什么</h4>
+<p><strong>普通索引</strong><br>
+普通索引是最基本的索引类型，而且它没有唯一性之类的限制。普通索引可以通过以下几种方式创建：</p>
+<pre><code>创建索引，例如
+CREATE INDEX &lt;索引的名字&gt; ON tablename (列的列表);
+修改表，例如
+ALTER TABLE tablename ADD INDEX [索引的名字] (列的列表);
+创建表的时候指定索引，例如
+CREATE TABLE tablename ( [...],INDEX[索引的名字] (列的列表) );
+</code></pre>
+<p><strong>主键索引</strong><br>
+主键是一种唯一性索引，但它必须指定为“PRIMARY KEY”。<br>
+主键一般在创建表的时候指定，例如</p>
+<pre><code>CREATE TABLE tablename ( [...],PRIMARY KEY(列的列表) );
+</code></pre>
+<p>但是，我们也可以通过修改表的方式加入主键，例如“ALTER TABLE tablename ADD PRIMARY KEY (列的列表); ”。每个表只能有一个主键。</p>
+<p><strong>区别</strong><br>
+普通索引是最基本的索引类型，没有任何限制，值可以为空，仅<strong>加速查询</strong>。普通索引是可以重复的，一个表中可以有多个普通索引。<br>
+主键索引是一种特殊的<strong>唯一索引</strong>，一个表只能有一个主键，<strong>不允许有空值</strong>；索引列的所有值都只能出现一次，即必须唯一。简单来说：主键索引是加速查询 + 列值唯一（不可以有null）+ 表中只有一个。</p>
+<h4 id="sql-join-中-on-与-where-的区别">SQL JOIN 中 on 与 where 的区别</h4>
+<ul>
+<li><strong>left join</strong> : 左连接，返回左表中所有的记录以及右表中连接字段相等的记录。</li>
+<li><strong>right join</strong> : 右连接，返回右表中所有的记录以及左表中连接字段相等的记录。</li>
+<li><strong>inner join</strong> : 内连接，又叫等值连接，只返回两个表中连接字段相等的行。</li>
+<li><strong>full join</strong> : 外连接，返回两个表中的行：left join + right join。</li>
+<li><strong>cross join</strong> : 结果是笛卡尔积，就是第一个表的行数乘以第二个表的行数。</li>
+</ul>
+<p>数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的<strong>临时表</strong>，然后再将这张临时表返回给用户。<br>
+在使用 <strong>left join</strong> 时，<strong>on</strong> 和 <strong>where</strong> 条件的区别如下：</p>
+<ol>
+<li>
+<p><strong>on</strong> 条件是在生成临时表时使用的条件，它不管 <strong>on</strong> 中的条件是否为真，都会返回左边表中的记录。</p>
+</li>
+<li>
+<p><strong>where</strong> 条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有 <strong>left join</strong> 的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。</p>
+</li>
+</ol>
+<h4 id="优化-mysql-数据库的方法">优化 MYSQL 数据库的方法</h4>
+<ul>
+<li>
+<p>选取最适用的字段属性，尽可能减少定义字段长度，尽量把字段设置 NOT NULL, 例如’省份，性别’, 最好设置为 ENUM</p>
+</li>
+<li>
+<p>使用连接（JOIN）来代替子查询:</p>
+</li>
+<li>
+<p>使用联合 (UNION) 来代替手动创建的临时表</p>
+</li>
+<li>
+<p>事务处理</p>
+</li>
+<li>
+<p>锁定表，优化事务处理</p>
+</li>
+<li>
+<p>使用外键，优化锁定表</p>
+</li>
+<li>
+<p>建立索引</p>
+</li>
+<li>
+<p>优化 sql 语句</p>
+</li>
+</ul>
+<h4 id="一个汉字占多少长度">一个汉字占多少长度</h4>
+<p>与编码有关<br>
+UTF-8： 一个汉字=3个字节<br>
+GBK：一个汉字=2个字节</p>
+<h4 id="什么时候适合创建索引">什么时候适合创建索引</h4>
+<p>适合创建索引条件：</p>
+<ul>
+<li>主键自动建立唯一索引</li>
+<li><strong>频繁作为查询条件</strong>的字段应该建立索引</li>
+<li>查询中与其他表关联的字段，<strong>外键关系</strong>建立索引</li>
+<li>单键/组合索引的选择问题，组合索引性价比更高</li>
+<li>查询中排序的字段，<strong>排序字段</strong>若通过索引去访问将大大提高排序效率</li>
+<li>查询中统计或者<strong>分组字段</strong></li>
+</ul>
+<p>不适合创建索引条件：</p>
+<ul>
+<li>表<strong>记录少</strong>的</li>
+<li><strong>经常增删改</strong>的表或者字段</li>
+<li>where条件里用不到的字段不创建索引</li>
+<li><strong>过滤性不好</strong>的不适合建索引</li>
+</ul>
+<h4 id="常见的sql语句">常见的sql语句</h4>
+<ul>
+<li>表名order中有 1 2 3 4 1<br>
+去掉重复值 sql : select distinct from order<br>
+结果为company 1 2 3 4</li>
+<li>asc 是升序 是从小到大 desc 是大到小 group 是分组</li>
+<li>IFNULL() 函数用于判断第一个表达式是否为 NULL，如果为 NULL 则返回第二个参数的值，如果不为 NULL 则返回第一个参数的值。</li>
+<li>查找学生<br>
+查询姓“赵”的用户 select * from table where name like '赵%'<br>
+查询姓名中最后一个字段带赵字 select * from table where name like '%赵'<br>
+查询姓名中带有赵的字段 select * from table where name like '%赵%'</li>
+<li>汇总分析<br>
+查询一个学生总分 select sum(*) from table where 课程号='0002'<br>
+查询选课程的学生人数 select count(distinct 学号) as 学生人数 from table</li>
+<li>分组<br>
+查询各科成绩最高和最低的分<br>
+select 课程号 max（成绩）as 最高分，min（成绩）as 最低分 from table group by 课程号<br>
+查询每门课程被选修的学生数<br>
+select 课程号，count(学号) from score group by 课程号<br>
+查询男生和女生人数<br>
+select 性别，count(*) from tabel group by 性别</li>
+<li>分组结果的条件<br>
+查询平均成绩大于60分的学号和平均成绩<br>
+select 学号，avg(成绩)from group by 学号 having avg(成绩) &gt; 60<br>
+查询至少选修俩门课程的学生学号<br>
+select 学号,count(课程号)as 选修课程数目 from table group by 学号 having count(课程号)&gt;=2;<br>
+查询同名同性学生名单并统计人数<br>
+select 姓名，count() as 人数 from table group by 姓名 having count(*)&gt;=2;<br>
+查询不及格的课程并按课程号从大到小排序<br>
+select 课程号 from table where 成绩&lt;60 order by 课程号 desc;</li>
+</ul>
 <hr>
 <p>部分转载自：</p>
 <p>https://zhuanlan.zhihu.com/p/116866170</p>
