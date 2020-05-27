@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-05-01T13:17:10.619Z</updated>
+    <updated>2020-05-27T04:41:30.672Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -10,6 +10,179 @@
     <logo>https://sheldie.github.io/images/avatar.png</logo>
     <icon>https://sheldie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Flask简单入门]]></title>
+        <id>https://sheldie.github.io/post/Flask简单入门/</id>
+        <link href="https://sheldie.github.io/post/Flask简单入门/">
+        </link>
+        <updated>2020-05-27T03:30:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>使用python的Web框架实现简单网页</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>使用python的Web框架实现简单网页</p>
+<!-- more -->
+<p>最近需要用到Python的Web框架做个简单的网页，在Django和Flask间选择了比较轻量的Flask。</p>
+<blockquote>
+<p>Flask是一个使用 Python 编写的轻量级 Web 应用框架。<br>
+其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2 。Flask使用 BSD 授权。</p>
+<p>WSGI：Web Server Gateway Interface（Web服务器网关接口，WSGI）已被用作Python Web应用程序开发的标准。 WSGI是Web服务器和Web应用程序之间通用接口的规范。</p>
+<p>Werkzeug：它是一个WSGI工具包，它实现了请求，响应对象和实用函数。 这使得能够在其上构建web框架。 Flask框架使用Werkzeug作为其基础之一。</p>
+<p>jinja2：jinja2是Python的一个流行的模板引擎。Web模板系统将模板与特定数据源组合以呈现动态网页。</p>
+<p>Flask通常被称为微框架。 它旨在保持应用程序的核心简单且可扩展。Flask没有用于数据库处理的内置抽象层，也没有形成验证支持。相反，Flask支持扩展以向应用程序添加此类功能。一些受欢迎的Flask扩展将在本教程后续章节进行讨论。</p>
+</blockquote>
+<p>需求：能展示简单的网页。</p>
+<p>之前好像安装过：</p>
+<pre><code>pip install Flask
+</code></pre>
+<p>首先在根目录新建<code>manage.py</code>。<br>
+尝试最简单的应用：Hello world!</p>
+<pre><code>from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://sheldie.github.io/post-images/1590550389268.png" alt="" loading="lazy"></figure>
+<p>打开：http://127.0.0.1:5000/ 就能看到Hello World了。</p>
+<p>但是这样是不够的，我们需要直接编辑html文件来修改前端页面。<br>
+于是在根目录下新建文件夹<code>app</code>，在<code>app</code>文件夹下再新建<code>__init__.py</code>和<code>routes.py</code>。</p>
+<p><code>__init__.py</code>：</p>
+<pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+from app import routes
+</code></pre>
+<p><code>routes.py</code>：</p>
+<pre><code>from flask import render_template
+from app import app
+
+@app.route('/')
+@app.route('/home')
+def home():
+    return render_template(&quot;home.html&quot;)
+</code></pre>
+<p>将<code>manage.py</code>修改如下：</p>
+<pre><code>from app import app
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
+</code></pre>
+<p>然后在<code>app</code>文件夹下新建两个文件夹：<code>static</code>, <code>templates</code><br>
+<code>static</code>中放置静态文件如css，js和图片等。<br>
+<code>templates</code>中放置html文件（如home.html等）</p>
+<p>如果从服务端访问页面，则只读取<code>templates</code>中的html文件，不能读取其中的图片。<br>
+静态图片只能放在<strong>static</strong>文件夹下，路径为：</p>
+<pre><code>&lt;img src=&quot;static/xxx.png&quot;&gt;
+</code></pre>
+<p>完成以上步骤后再次运行<code>manage.py</code>，就能看到自己的html网页了。</p>
+<p>如需添加其他页面，将html文件放置在<code>templates</code>文件夹下，在<code>routes.py</code>下配置相关路由。<br>
+另外可以传递数据，目前没大量使用到，因此参考了其他博客。<br>
+<code>routes.py</code>：</p>
+<pre><code>from flask import render_template
+from app import app
+
+@app.route('/')
+@app.route('/index')
+def index():
+    user = {'username':'用户'}
+    posts = [
+        {
+            'author':{'username':'用户1'},
+            'body':'这是模板模块中的循环例子～1'
+
+        },
+        {
+            'author': {'username': '用户2'},
+            'body': '这是模板模块中的循环例子～2'
+        }
+    ]
+    return render_template('index.html',title='标题',user=user,posts=posts)
+</code></pre>
+<p><code>app/templates/index.html</code> :</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html &gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+     {% if title %}
+        &lt;title&gt;{{ title }} - 博客&lt;/title&gt;
+        {% else %}
+        &lt;title&gt;欢迎来到博客!&lt;/title&gt;
+        {% endif %}
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;你好, {{ user.username }} !&lt;/h1&gt;
+        {% for post in posts %}
+            &lt;div&gt;&lt;p&gt;{{ post.author.username }} 说:&lt;b&gt;{{ post.body }}&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;
+        {% endfor %}
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>目前以上使用基本能满足需求，之后有需要会再深入学习。<br>
+其他可以做到的有：连接数据库、蓝图、创建基类模板等。</p>
+<p>比较完整的项目框架结构有：</p>
+<pre><code>| - projectName
+	| - app  //程序包
+		| - templates //jinjia2模板
+		|- static //css,js 图片等静态文件
+		| - main  //py程序包 ，可以有多个这种包，每个对应不同的功能
+			| - __init__.py
+			|- errors.py
+			|- forms.py
+			|- views.py
+		|- __init__.py
+		|- email.py //邮件处理程序
+		|- models.py //数据库模型
+	|- migrations //数据迁移文件夹
+	| - tests  //单元测试
+		|- __init__.py
+		|- test*.py //单元测试程序，可以包含多个对应不同的功能点测试
+	|- venv  //虚拟环境
+	|- requirements.txt //列出了所有依赖包以及版本号，方便在其他位置生成相同的虚拟环境以及依赖
+	|- config.py //全局配置文件，配置全局变量
+	|- manage.py //启动程序
+</code></pre>
+<pre><code>project/
+    app/                    # 整个程序的包目录
+        static/                 # 静态资源文件
+            js/                     # JS脚本
+            css/                    # 样式表
+            img/                    # 图片
+            favicon.ico              # 网站图标
+        templates/              # 模板文件
+            common/                 # 通用模板
+            errors/                 # 错误页面
+            user/                   # 用户模板
+            posts/                  # 帖子模板
+            email/                  # 邮件发送
+        views/                  # 视图文件
+        models/                 # 数据模型
+        forms/                  # 表单文件
+        config.py               # 配置文件
+        email.py                # 邮件发送
+        extensions.py           # 各种扩展
+    migrations/             # 数据库迁移目录
+    tests/                  # 测试单元
+    venv/                   # 虚拟环境
+    requirements.txt        # 依赖包的列表
+    manage.py               # 项目启动控制文件
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://sheldie.github.io/post-images/1590550411169.png" alt="" loading="lazy"></figure>
+<hr>
+<p>部分转载自：</p>
+<ol>
+<li>https://blog.csdn.net/u014793102/article/details/80372815</li>
+<li>https://zhuanlan.zhihu.com/p/65205656</li>
+<li>https://blog.csdn.net/pzl_pzl/article/details/80861329</li>
+<li>https://blog.csdn.net/xingyunLOST/article/details/77155584</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MySQL相关知识点]]></title>
         <id>https://sheldie.github.io/post/MySQL相关知识点/</id>
@@ -219,9 +392,30 @@ select 姓名，count() as 人数 from table group by 姓名 having count(*)&gt;
 查询不及格的课程并按课程号从大到小排序<br>
 select 课程号 from table where 成绩&lt;60 order by 课程号 desc;</li>
 </ul>
+<h3 id="数据库事务">数据库事务</h3>
+<h4 id="事务">事务</h4>
+<h4 id="事务的特性">事务的特性</h4>
+<ol>
+<li>
+<p>原子性（Atomicity）：事务开始后所有操作，要么全部做完，要么全部不做，不可能停滞在中间环节。事务执行过程中出错，会回滚到事务开始前的状态，所有的操作就像没有发生一样。也就是说事务是一个不可分割的整体，就像化学中学过的原子，是物质构成的基本单位。</p>
+</li>
+<li>
+<p>一致性（Consistency）：事务开始前和结束后，数据库的完整性约束没有被破坏。比如A向B转账，不可能A扣了钱，B却没收到。</p>
+</li>
+<li>
+<p>隔离性（Isolation）：同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰。比如A正在从一张银行卡中取钱，在A取钱的过程结束前，B不能向这张卡转账。</p>
+</li>
+<li>
+<p>持久性（Durability）：事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚。</p>
+</li>
+</ol>
+<h4 id="事务隔离级别">事务隔离级别</h4>
 <hr>
 <p>部分转载自：</p>
-<p>https://zhuanlan.zhihu.com/p/116866170</p>
+<ol>
+<li>https://zhuanlan.zhihu.com/p/116866170</li>
+<li>https://www.cnblogs.com/wyaokai/p/10921323.html</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
@@ -767,18 +961,7 @@ UTF-8以字节为编码单元，它的字节顺序在所有系统中都是一样
         <link href="https://sheldie.github.io/post/分布式与集群/">
         </link>
         <updated>2020-04-12T00:00:00.000Z</updated>
-        <content type="html"><![CDATA[<p>转载自：</p>
-<ol>
-<li>
-<p>分布式与集群的区别是什么？ - 大闲人柴毛毛的回答 - 知乎<br>
-https://www.zhihu.com/question/20004877/answer/282033178</p>
-</li>
-<li>
-<p>分布式与集群的区别是什么？ - 灵剑的回答 - 知乎<br>
-https://www.zhihu.com/question/20004877/answer/568581790</p>
-</li>
-</ol>
-<h3 id="单机结构"><strong>单机结构</strong></h3>
+        <content type="html"><![CDATA[<h3 id="单机结构"><strong>单机结构</strong></h3>
 <p>我想大家最最最熟悉的就是单机结构，一个系统业务量很小的时候所有的代码都放在一个项目中就好了，然后这个项目部署在一台服务器上就好了。整个项目所有的服务都由这台服务器提供。这就是单机结构。</p>
 <p>那么，单机结构有啥缺点呢？我想缺点是显而易见的，单机的处理能力毕竟是有限的，当你的业务增长到一定程度的时候，单机的硬件资源将无法满足你的业务需求。此时便出现了集群模式，往下接着看。</p>
 <h3 id="集群结构"><strong>集群结构</strong></h3>
@@ -801,6 +984,18 @@ https://www.zhihu.com/question/20004877/answer/568581790</p>
 <p>其实分布式不一定就是不同的组件，同一个组件也可以，关键在于是否通过交换信息的方式进行协作。比如说Zookeeper的节点都是对等的，但它自己就构成一个分布式系统。</p>
 <p>也就是说，分布式是指通过网络连接的多个组件，通过交换信息协作而形成的系统。而集群，是指同一种组件的多个实例，形成的逻辑上的整体。</p>
 <p>可以看出这两个概念并不完全冲突，分布式系统也可以是一个集群，例子就是前面说的zookeeper等，它的特征是服务之间会互相通信协作。是分布式系统不是集群的情况，就是多个不同组件构成的系统；是集群不是分布式系统的情况，比如多个经过负载均衡的HTTP服务器，它们之间不会互相通信，如果不带上负载均衡的部分的话，一般不叫做分布式系统。</p>
+<hr>
+<p>转载自：</p>
+<ol>
+<li>
+<p>分布式与集群的区别是什么？ - 大闲人柴毛毛的回答 - 知乎<br>
+https://www.zhihu.com/question/20004877/answer/282033178</p>
+</li>
+<li>
+<p>分布式与集群的区别是什么？ - 灵剑的回答 - 知乎<br>
+https://www.zhihu.com/question/20004877/answer/568581790</p>
+</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
@@ -934,38 +1129,6 @@ id 需要保证长度和唯一性<br>
 相关问题可参考：https://github.com/gitalk/gitalk/issues/102</p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://sheldie.github.io/post/hello-gridea/</id>
-        <link href="https://sheldie.github.io/post/hello-gridea/">
-        </link>
-        <updated>2019-12-31T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>

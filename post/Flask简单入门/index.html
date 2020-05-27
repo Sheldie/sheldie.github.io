@@ -1,0 +1,358 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flask简单入门 | Shezzer&#39;s Blog</title>
+<link rel="shortcut icon" href="https://sheldie.github.io/favicon.ico?v=1590550466752">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://sheldie.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Shezzer&#39;s Blog
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="http://www.shezzer.com/" class="menu gt-a-link" target="_blank">
+                            生活博客
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Flask简单入门
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-05-27 ·
+                    </time>
+                    
+                        <a href="https://sheldie.github.io/tag/UMcLgMOvZ/" class="post-tags">
+                            # Flask
+                        </a>
+                    
+                        <a href="https://sheldie.github.io/tag/7adxUBdtzB/" class="post-tags">
+                            # Web
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>使用python的Web框架实现简单网页</p>
+<!-- more -->
+<p>最近需要用到Python的Web框架做个简单的网页，在Django和Flask间选择了比较轻量的Flask。</p>
+<blockquote>
+<p>Flask是一个使用 Python 编写的轻量级 Web 应用框架。<br>
+其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2 。Flask使用 BSD 授权。</p>
+<p>WSGI：Web Server Gateway Interface（Web服务器网关接口，WSGI）已被用作Python Web应用程序开发的标准。 WSGI是Web服务器和Web应用程序之间通用接口的规范。</p>
+<p>Werkzeug：它是一个WSGI工具包，它实现了请求，响应对象和实用函数。 这使得能够在其上构建web框架。 Flask框架使用Werkzeug作为其基础之一。</p>
+<p>jinja2：jinja2是Python的一个流行的模板引擎。Web模板系统将模板与特定数据源组合以呈现动态网页。</p>
+<p>Flask通常被称为微框架。 它旨在保持应用程序的核心简单且可扩展。Flask没有用于数据库处理的内置抽象层，也没有形成验证支持。相反，Flask支持扩展以向应用程序添加此类功能。一些受欢迎的Flask扩展将在本教程后续章节进行讨论。</p>
+</blockquote>
+<p>需求：能展示简单的网页。</p>
+<p>之前好像安装过：</p>
+<pre><code>pip install Flask
+</code></pre>
+<p>首先在根目录新建<code>manage.py</code>。<br>
+尝试最简单的应用：Hello world!</p>
+<pre><code>from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://sheldie.github.io/post-images/1590550389268.png" alt="" loading="lazy"></figure>
+<p>打开：http://127.0.0.1:5000/ 就能看到Hello World了。</p>
+<p>但是这样是不够的，我们需要直接编辑html文件来修改前端页面。<br>
+于是在根目录下新建文件夹<code>app</code>，在<code>app</code>文件夹下再新建<code>__init__.py</code>和<code>routes.py</code>。</p>
+<p><code>__init__.py</code>：</p>
+<pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+from app import routes
+</code></pre>
+<p><code>routes.py</code>：</p>
+<pre><code>from flask import render_template
+from app import app
+
+@app.route('/')
+@app.route('/home')
+def home():
+    return render_template(&quot;home.html&quot;)
+</code></pre>
+<p>将<code>manage.py</code>修改如下：</p>
+<pre><code>from app import app
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
+</code></pre>
+<p>然后在<code>app</code>文件夹下新建两个文件夹：<code>static</code>, <code>templates</code><br>
+<code>static</code>中放置静态文件如css，js和图片等。<br>
+<code>templates</code>中放置html文件（如home.html等）</p>
+<p>如果从服务端访问页面，则只读取<code>templates</code>中的html文件，不能读取其中的图片。<br>
+静态图片只能放在<strong>static</strong>文件夹下，路径为：</p>
+<pre><code>&lt;img src=&quot;static/xxx.png&quot;&gt;
+</code></pre>
+<p>完成以上步骤后再次运行<code>manage.py</code>，就能看到自己的html网页了。</p>
+<p>如需添加其他页面，将html文件放置在<code>templates</code>文件夹下，在<code>routes.py</code>下配置相关路由。<br>
+另外可以传递数据，目前没大量使用到，因此参考了其他博客。<br>
+<code>routes.py</code>：</p>
+<pre><code>from flask import render_template
+from app import app
+
+@app.route('/')
+@app.route('/index')
+def index():
+    user = {'username':'用户'}
+    posts = [
+        {
+            'author':{'username':'用户1'},
+            'body':'这是模板模块中的循环例子～1'
+
+        },
+        {
+            'author': {'username': '用户2'},
+            'body': '这是模板模块中的循环例子～2'
+        }
+    ]
+    return render_template('index.html',title='标题',user=user,posts=posts)
+</code></pre>
+<p><code>app/templates/index.html</code> :</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html &gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+     {% if title %}
+        &lt;title&gt;{{ title }} - 博客&lt;/title&gt;
+        {% else %}
+        &lt;title&gt;欢迎来到博客!&lt;/title&gt;
+        {% endif %}
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;你好, {{ user.username }} !&lt;/h1&gt;
+        {% for post in posts %}
+            &lt;div&gt;&lt;p&gt;{{ post.author.username }} 说:&lt;b&gt;{{ post.body }}&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;
+        {% endfor %}
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>目前以上使用基本能满足需求，之后有需要会再深入学习。<br>
+其他可以做到的有：连接数据库、蓝图、创建基类模板等。</p>
+<p>比较完整的项目框架结构有：</p>
+<pre><code>| - projectName
+	| - app  //程序包
+		| - templates //jinjia2模板
+		|- static //css,js 图片等静态文件
+		| - main  //py程序包 ，可以有多个这种包，每个对应不同的功能
+			| - __init__.py
+			|- errors.py
+			|- forms.py
+			|- views.py
+		|- __init__.py
+		|- email.py //邮件处理程序
+		|- models.py //数据库模型
+	|- migrations //数据迁移文件夹
+	| - tests  //单元测试
+		|- __init__.py
+		|- test*.py //单元测试程序，可以包含多个对应不同的功能点测试
+	|- venv  //虚拟环境
+	|- requirements.txt //列出了所有依赖包以及版本号，方便在其他位置生成相同的虚拟环境以及依赖
+	|- config.py //全局配置文件，配置全局变量
+	|- manage.py //启动程序
+</code></pre>
+<pre><code>project/
+    app/                    # 整个程序的包目录
+        static/                 # 静态资源文件
+            js/                     # JS脚本
+            css/                    # 样式表
+            img/                    # 图片
+            favicon.ico              # 网站图标
+        templates/              # 模板文件
+            common/                 # 通用模板
+            errors/                 # 错误页面
+            user/                   # 用户模板
+            posts/                  # 帖子模板
+            email/                  # 邮件发送
+        views/                  # 视图文件
+        models/                 # 数据模型
+        forms/                  # 表单文件
+        config.py               # 配置文件
+        email.py                # 邮件发送
+        extensions.py           # 各种扩展
+    migrations/             # 数据库迁移目录
+    tests/                  # 测试单元
+    venv/                   # 虚拟环境
+    requirements.txt        # 依赖包的列表
+    manage.py               # 项目启动控制文件
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://sheldie.github.io/post-images/1590550411169.png" alt="" loading="lazy"></figure>
+<hr>
+<p>部分转载自：</p>
+<ol>
+<li>https://blog.csdn.net/u014793102/article/details/80372815</li>
+<li>https://zhuanlan.zhihu.com/p/65205656</li>
+<li>https://blog.csdn.net/pzl_pzl/article/details/80861329</li>
+<li>https://blog.csdn.net/xingyunLOST/article/details/77155584</li>
+</ol>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://sheldie.github.io/post/MySQL相关知识点/" class="post-title gt-a-link">
+                    MySQL相关知识点
+                </a>
+            </div>
+        
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '0234359455b34f62ff4c',
+    clientSecret: 'f493678fe574c168c8d416f30696a9324b3c1bfd',
+    repo: 'sheldie.GiTalk',
+    owner: 'Sheldie',
+    admin: ['Sheldie'],
+    id: decodeURI(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">Shezzer的技术博客</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/Sheldie" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://sheldie.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>
