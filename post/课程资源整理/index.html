@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KNN | Shezzer&#39;s Blog</title>
+<title>课程资源整理 | Shezzer&#39;s Blog</title>
 <link rel="shortcut icon" href="https://sheldie.github.io/favicon.ico?v=1599204336379">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sheldie.github.io/styles/main.css">
@@ -30,11 +30,11 @@
 
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -91,49 +91,81 @@
         </div>
     </div>
 </nav>
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #KNN
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://sheldie.github.io/post/KNN算法/">
-                            <span class="post-title gt-c-content-color-first">KNN算法</span>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    课程资源整理
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-09-01 ·
+                    </time>
+                    
+                        <a href="https://sheldie.github.io/tag/pMDDkrIpj/" class="post-tags">
+                            # 课程资源
                         </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-04-22 ·
-                        </time>
-                        
-                            <a href="https://sheldie.github.io/tag/5mBSdwpsI/" class="post-tag">
-                                # 机器学习
-                            </a>
-                        
-                            <a href="https://sheldie.github.io/tag/M0tZm1b-ak/" class="post-tag">
-                                # KNN
-                            </a>
-                        
-                    </div>
+                    
                 </div>
-                
+                <div class="post-content">
+                    <h4 id="机器学习-吴恩达">机器学习 - 吴恩达</h4>
+<p>Coursera课程地址：https://www.coursera.org/learn/machine-learning<br>
+含英文字幕，可学习相关英文词汇。</p>
+<p>中英字幕视频：https://www.bilibili.com/video/BV164411b7dx</p>
+<p>中文笔记：https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes</p>
+<h4 id="深度学习-吴恩达">深度学习 - 吴恩达</h4>
+<p>视频： https://www.bilibili.com/video/BV1gb411j7Bs<br>
+https://www.bilibili.com/video/BV164411m79z</p>
+<p>中文笔记：https://github.com/fengdu78/deeplearning_ai_books</p>
+<p>在线笔记：http://www.ai-start.com/dl2017/</p>
+<h4 id="cs231n-convolutional-neural-networks-for-visual-recognition">CS231n: Convolutional Neural Networks for Visual Recognition</h4>
+<h5 id="面向视觉识别的卷积神经网络">面向视觉识别的卷积神经网络</h5>
+<p>课程官网：http://vision.stanford.edu/teaching/cs231n/index.html</p>
+<p>笔记总集：https://zhuanlan.zhihu.com/p/21930884</p>
+<h4 id="其他课程">其他课程</h4>
+<p>cs229，cs224n，cs294，cs246<br>
+mit：6004，6828，线代，boyd优化</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://sheldie.github.io/post/Flask简单入门/" class="post-title gt-a-link">
+                    Flask简单入门
+                </a>
             </div>
         
-    </div>
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '0234359455b34f62ff4c',
+    clientSecret: 'f493678fe574c168c8d416f30696a9324b3c1bfd',
+    repo: 'sheldie.GiTalk',
+    owner: 'Sheldie',
+    admin: ['Sheldie'],
+    id: decodeURI(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">Shezzer的技术博客</div>
@@ -168,6 +200,7 @@
 <script>
     hljs.initHighlightingOnLoad()
 </script>
+
 
     </div>
 </div>

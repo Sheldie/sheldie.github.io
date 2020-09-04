@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-05-27T05:40:54.056Z</updated>
+    <updated>2020-09-04T07:26:01.059Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://sheldie.github.io/images/avatar.png</logo>
     <icon>https://sheldie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[课程资源整理]]></title>
+        <id>https://sheldie.github.io/post/课程资源整理/</id>
+        <link href="https://sheldie.github.io/post/课程资源整理/">
+        </link>
+        <updated>2020-09-01T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="机器学习-吴恩达">机器学习 - 吴恩达</h4>
+<p>Coursera课程地址：https://www.coursera.org/learn/machine-learning<br>
+含英文字幕，可学习相关英文词汇。</p>
+<p>中英字幕视频：https://www.bilibili.com/video/BV164411b7dx</p>
+<p>中文笔记：https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes</p>
+<h4 id="深度学习-吴恩达">深度学习 - 吴恩达</h4>
+<p>视频： https://www.bilibili.com/video/BV1gb411j7Bs<br>
+https://www.bilibili.com/video/BV164411m79z</p>
+<p>中文笔记：https://github.com/fengdu78/deeplearning_ai_books</p>
+<p>在线笔记：http://www.ai-start.com/dl2017/</p>
+<h4 id="cs231n-convolutional-neural-networks-for-visual-recognition">CS231n: Convolutional Neural Networks for Visual Recognition</h4>
+<h5 id="面向视觉识别的卷积神经网络">面向视觉识别的卷积神经网络</h5>
+<p>课程官网：http://vision.stanford.edu/teaching/cs231n/index.html</p>
+<p>笔记总集：https://zhuanlan.zhihu.com/p/21930884</p>
+<h4 id="其他课程">其他课程</h4>
+<p>cs229，cs224n，cs294，cs246<br>
+mit：6004，6828，线代，boyd优化</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Flask简单入门]]></title>
         <id>https://sheldie.github.io/post/Flask简单入门/</id>
@@ -938,24 +963,6 @@ UTF-8以字节为编码单元，它的字节顺序在所有系统中都是一样
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[博客说明]]></title>
-        <id>https://sheldie.github.io/post/博客说明/</id>
-        <link href="https://sheldie.github.io/post/博客说明/">
-        </link>
-        <updated>2020-04-13T13:56:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>本博客新建于2020年4月 ✌️<br>
-主要用于个人学习 🚀<br>
-以前的内容就不搬过来了<br>
-之后会陆续更新的~</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>本博客新建于2020年4月 ✌️<br>
-主要用于个人学习 🚀<br>
-以前的内容就不搬过来了<br>
-之后会陆续更新的~</p>
-<!-- more -->
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[分布式与集群]]></title>
         <id>https://sheldie.github.io/post/分布式与集群/</id>
         <link href="https://sheldie.github.io/post/分布式与集群/">
@@ -1049,86 +1056,21 @@ https://www.zhihu.com/question/20004877/answer/568581790</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[配置GiTalk]]></title>
-        <id>https://sheldie.github.io/post/配置GiTalk/</id>
-        <link href="https://sheldie.github.io/post/配置GiTalk/">
+        <title type="html"><![CDATA[博客说明]]></title>
+        <id>https://sheldie.github.io/post/博客说明/</id>
+        <link href="https://sheldie.github.io/post/博客说明/">
         </link>
-        <updated>2020-01-01T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>😃 给博客开放一下评论功能~</p>
+        <updated>2020-01-03T13:56:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>本博客新建于2020年4月 ✌️<br>
+主要用于个人学习 🚀<br>
+以前的内容就不搬过来了<br>
+之后会陆续更新的~</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>😃 给博客开放一下评论功能~</p>
+        <content type="html"><![CDATA[<p>本博客新建于2020年4月 ✌️<br>
+主要用于个人学习 🚀<br>
+以前的内容就不搬过来了<br>
+之后会陆续更新的~</p>
 <!-- more -->
-<ol>
-<li>
-<p>首先在Github中进行以下设置：</p>
-<ul>
-<li>
-<p>打开<code>Github - Settings - Developer Settings - OAuth Apps - New OAuth App</code></p>
-</li>
-<li>
-<p>填写必要信息：<br>
-<code>Application name</code>填 Gitalk<br>
-<code>Homepage URL</code> 和 <code>Authorization callback URL</code> 填自己 Github Pages 的博客域名<br>
-（如：https://sheldie.github.io/）</p>
-</li>
-<li>
-<p>点击Register Application</p>
-</li>
-<li>
-<p>打开后能看到<code>Client ID</code>和<code>Client Secret</code></p>
-</li>
-</ul>
-</li>
-<li>
-<p>在Github新建一个 public 仓库，仓库名自取</p>
-</li>
-<li>
-<p>在<code>Gridea - 远程 - 评论配置</code>中选择 GiTalk + 显示评论<br>
-填入<code>Client ID</code>和<code>Client Secret</code><br>
-填入刚才创建的仓库名称<br>
-Owner填写自己Github的用户名</p>
-</li>
-</ol>
-<p>详细内容可以打开GiTalk Document查看<br>
-在Gridea中保存设置并同步后<br>
-打开任意文章页 - 使用Github登录后便可以进行评论<br>
-内容会出现在仓库的Issues中，可以进行修改和删除</p>
-<p>到这里就配置完成了😀</p>
-<hr>
-<p>2020-04-13:</p>
-<p>总结两个问题：</p>
-<ol>
-<li>
-<blockquote>
-<p>未找到相关的 <a href="https://github.com/Sheldie/sheldie.GiTalk/issues">Issues</a> 进行评论<br>
-请联系 @Sheldie 初始化创建</p>
-</blockquote>
-<p>发布文章后，打开对应文章页登录Github账号，会自动创建Issue<br>
-否则无法进行评论</p>
-</li>
-<li>
-<p>部分文章出现 Error: Validation Failed.</p>
-<p>原因是某些文章标题较长，自动创建Issue时，超出了50字符限制</p>
-<p>解决方法：打开所用主题的源代码，找到相关部分</p>
-<pre><code>  var gitalk = new Gitalk({
-    clientID: '&lt;%= commentSetting.gitalkSetting.clientId %&gt;',
-    clientSecret: '&lt;%= commentSetting.gitalkSetting.clientSecret %&gt;',
-    repo: '&lt;%= commentSetting.gitalkSetting.repository %&gt;',
-    owner: '&lt;%= commentSetting.gitalkSetting.owner %&gt;',
-    admin: ['&lt;%= commentSetting.gitalkSetting.owner %&gt;'],
-    id: location.pathname,      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-</code></pre>
-<p>可以看到pure主题也有提示<br>
-id 需要保证长度和唯一性<br>
-将<code>id: location.pathname</code><br>
-改为<code>id: decodeURI(location.pathname)</code><br>
-解码后长度会变短</p>
-<p>同样也可以转成 md5<br>
-相关问题可参考：https://github.com/gitalk/gitalk/issues/102</p>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
