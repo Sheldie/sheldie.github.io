@@ -33,7 +33,22 @@
             文章目录
           </p>
           <div class="toc-container hidden lg:block">
-            
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
           </div>
         </div>
       
@@ -84,116 +99,41 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">配置GiTalk</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">正则化</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-01-02 / 2 min read
+          2020-09-11 / 1 min read
         </div>
         
         <div class="post-content yue">
-          <p>😃 给博客开放一下评论功能~</p>
+          <p>L1、L2正则化</p>
 <!-- more -->
-<ol>
-<li>
-<p>首先在Github中进行以下设置：</p>
-<ul>
-<li>
-<p>打开<code>Github - Settings - Developer Settings - OAuth Apps - New OAuth App</code></p>
-</li>
-<li>
-<p>填写必要信息：<br>
-<code>Application name</code>填 Gitalk<br>
-<code>Homepage URL</code> 和 <code>Authorization callback URL</code> 填自己 Github Pages 的博客域名<br>
-（如：https://sheldie.github.io/）</p>
-</li>
-<li>
-<p>点击Register Application</p>
-</li>
-<li>
-<p>打开后能看到<code>Client ID</code>和<code>Client Secret</code></p>
-</li>
-</ul>
-</li>
-<li>
-<p>在Github新建一个 public 仓库，仓库名自取</p>
-</li>
-<li>
-<p>在<code>Gridea - 远程 - 评论配置</code>中选择 GiTalk + 显示评论<br>
-填入<code>Client ID</code>和<code>Client Secret</code><br>
-填入刚才创建的仓库名称<br>
-Owner填写自己Github的用户名</p>
-</li>
-</ol>
-<p>详细内容可以打开GiTalk Document查看<br>
-在Gridea中保存设置并同步后<br>
-打开任意文章页 - 使用Github登录后便可以进行评论<br>
-内容会出现在仓库的Issues中，可以进行修改和删除</p>
-<p>到这里就配置完成了😀</p>
 <hr>
-<p>2020-04-13:</p>
-<p>总结两个问题：</p>
+<h4 id="references">References</h4>
 <ol>
-<li>
-<blockquote>
-<p>未找到相关的 <a href="https://github.com/Sheldie/sheldie.GiTalk/issues">Issues</a> 进行评论<br>
-请联系 @Sheldie 初始化创建</p>
-</blockquote>
-<p>发布文章后，打开对应文章页登录Github账号，会自动创建Issue<br>
-否则无法进行评论</p>
-</li>
-<li>
-<p>部分文章出现 Error: Validation Failed.</p>
-<p>原因是某些文章标题较长，自动创建Issue时，超出了50字符限制</p>
-<p>解决方法：打开所用主题的源代码，找到相关部分</p>
-<pre><code>  var gitalk = new Gitalk({
-    clientID: '&lt;%= commentSetting.gitalkSetting.clientId %&gt;',
-    clientSecret: '&lt;%= commentSetting.gitalkSetting.clientSecret %&gt;',
-    repo: '&lt;%= commentSetting.gitalkSetting.repository %&gt;',
-    owner: '&lt;%= commentSetting.gitalkSetting.owner %&gt;',
-    admin: ['&lt;%= commentSetting.gitalkSetting.owner %&gt;'],
-    id: location.pathname,      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-</code></pre>
-<p>可以看到pure主题也有提示<br>
-id 需要保证长度和唯一性<br>
-将<code>id: location.pathname</code><br>
-改为<code>id: decodeURI(location.pathname)</code><br>
-解码后长度会变短</p>
-<p>同样也可以转成 md5<br>
-相关问题可参考：https://github.com/gitalk/gitalk/issues/102</p>
-</li>
+<li>深入理解L1、L2正则化 - MrLi的文章 - 知乎<br>
+<a href="https://zhuanlan.zhihu.com/p/29360425">https://zhuanlan.zhihu.com/p/29360425</a></li>
+<li><a href="https://blog.csdn.net/jinping_shi/article/details/52433975">https://blog.csdn.net/jinping_shi/article/details/52433975</a></li>
+<li><a href="https://www.cnblogs.com/heguanyou/p/7582578.html">https://www.cnblogs.com/heguanyou/p/7582578.html</a></li>
+<li>https://blog.csdn.net/NewThinker_wei/article/details/52857397</li>
 </ol>
 
         </div>
 
         
-          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://sheldie.github.io/tag/vtWmVyKBF/">
-            <span class="flex-auto">GiTalk</span>
-          </a>
-        
-          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://sheldie.github.io/tag/HJRsprDoD/">
-            <span class="flex-auto">Gridea</span>
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://sheldie.github.io/tag/GeR9x4qEJ/">
+            <span class="flex-auto">正则化</span>
           </a>
         
 
 
         <div class="flex justify-between py-8">
           
-            <div class="prev-post">
-              <a href="https://sheldie.github.io/post/博客说明/">
-                <h3 class="post-title">
-                  <i class="ri-arrow-left-line"></i>
-                  博客说明
-                </h3>
-              </a>
-            </div>
-          
 
           
             <div class="next-post">
-              <a href="https://sheldie.github.io/post/hello-gridea/">
+              <a href="https://sheldie.github.io/post/感知机/">
                 <h3 class="post-title">
-                  Hello Gridea
+                  感知机
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
