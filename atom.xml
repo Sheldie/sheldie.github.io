@@ -2,14 +2,74 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheldie.github.io</id>
     <title>Shezzer&apos;s Blog</title>
-    <updated>2020-09-08T13:24:05.976Z</updated>
+    <updated>2020-09-10T11:39:46.970Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheldie.github.io"/>
     <link rel="self" href="https://sheldie.github.io/atom.xml"/>
-    <subtitle>Shezzer的技术博客</subtitle>
+    <subtitle>Shezzer的学习博客</subtitle>
     <logo>https://sheldie.github.io/images/avatar.png</logo>
     <icon>https://sheldie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shezzer&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[感知机]]></title>
+        <id>https://sheldie.github.io/post/感知机/</id>
+        <link href="https://sheldie.github.io/post/感知机/">
+        </link>
+        <updated>2020-09-10T10:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>感知机（perceptron）是二分类的线性模型，其输入是实例的特征向量，输出的是事例的类别，分别是+1和-1，属于判别模型。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>感知机（perceptron）是二分类的线性模型，其输入是实例的特征向量，输出的是事例的类别，分别是+1和-1，属于判别模型。</p>
+<!-- more -->
+<p>统计学习方法（第2版）中有很详细的说明和推导，主要参考本书。</p>
+<h4 id="模型">模型</h4>
+<h5 id="感知机的定义">感知机的定义</h5>
+<figure data-type="image" tabindex="1"><img src="https://sheldie.github.io/post-images/1599720451966.png" alt="" loading="lazy"></figure>
+<h5 id="超平面">超平面</h5>
+<p>在数学中，超平面（Hyperplane）是n维欧氏空间中，余维度为1的子空间。即超平面是n维空间中的n-1维的子空间。它是平面中的直线、空间中的平面之推广。</p>
+<p><img src="https://sheldie.github.io/post-images/1599735239016.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599736004107.jpg" alt="" loading="lazy"></p>
+<h4 id="学习策略">学习策略</h4>
+<h5 id="线性可分">线性可分</h5>
+<p><img src="https://sheldie.github.io/post-images/1599735258245.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599735276825.png" alt="" loading="lazy"></p>
+<h5 id="损失函数连续可导">损失函数（连续可导）</h5>
+<p><img src="https://sheldie.github.io/post-images/1599735321627.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599735341615.png" alt="" loading="lazy"></p>
+<h4 id="学习算法原始形式">学习算法（原始形式）</h4>
+<h5 id="随机梯度下降法误分类驱动">随机梯度下降法（误分类驱动）</h5>
+<p><img src="https://sheldie.github.io/post-images/1599735385418.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599735431006.png" alt="" loading="lazy"></p>
+<h5 id="例题">例题</h5>
+<p><img src="https://sheldie.github.io/post-images/1599735461208.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599735527275.png" alt="" loading="lazy"></p>
+<h5 id="收敛性novikoff定理">收敛性（Novikoff定理）</h5>
+<p><img src="https://sheldie.github.io/post-images/1599735581449.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599735730882.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599735947510.png" alt="" loading="lazy"></p>
+<h4 id="学习算法对偶形式">学习算法（对偶形式）</h4>
+<p><img src="https://sheldie.github.io/post-images/1599735985431.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599736261268.png" alt="" loading="lazy"><br>
+<img src="https://sheldie.github.io/post-images/1599736265549.png" alt="" loading="lazy"></p>
+<h4 id="总结">总结</h4>
+<figure data-type="image" tabindex="2"><img src="https://sheldie.github.io/post-images/1599736605233.png" alt="" loading="lazy"></figure>
+<h4 id="验证">验证</h4>
+<h5 id="感知机无法表示异或">感知机无法表示异或</h5>
+<p>异或在平面几何上表现为两条正交的直线，故不存在第三条直线可以将其完整分割。<br>
+<img src="https://sheldie.github.io/post-images/1599736563602.png" alt="" loading="lazy"></p>
+<h4 id="其他相关">其他相关</h4>
+<h5 id="拉格朗日对偶性">拉格朗日对偶性</h5>
+<h5 id="svm">SVM</h5>
+<hr>
+<p>References:</p>
+<ol>
+<li>统计学习方法（第2版）- 李航</li>
+<li>https://www.cnblogs.com/huangyc/p/9706575.html</li>
+<li>算法——感知机详解（推导+证明） - Summer的文章 - 知乎<br>
+https://zhuanlan.zhihu.com/p/46762820</li>
+<li>http://www.cs.columbia.edu/~mcollins/courses/6998-2012/notes/perc.converge.pdf</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[深度学习前置基础]]></title>
         <id>https://sheldie.github.io/post/深度学习前置基础/</id>
@@ -41,7 +101,7 @@
 <h5 id="利用hessian矩阵判定多元函数的极值">利用Hessian矩阵判定多元函数的极值</h5>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3371149"><label class="task-list-item-label" for="task-item-3371149"> 怎么得到的结论？</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5252222"><label class="task-list-item-label" for="task-item-5252222"> 怎么得到的结论？</label></p>
 </li>
 </ul>
 <p>（1）当A正定矩阵时，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">f(x_1,x_2,...,x_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mn>0</mn></msub><mo>(</mo><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">M_0(a_1,a_2,...,a_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 处是极小值；<br>
@@ -78,7 +138,7 @@ https://zhuanlan.zhihu.com/p/90496291</p>
 <h4 id="多维高斯分布">多维高斯分布</h4>
 <ul class="contains-task-list">
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2015963"><label class="task-list-item-label" for="task-item-2015963"> ？</label></p>
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4927781"><label class="task-list-item-label" for="task-item-4927781"> ？</label></p>
 </li>
 <li>
 <h5 id="参考协方差矩阵">参考：协方差矩阵</h5>
@@ -1105,56 +1165,6 @@ https://www.zhihu.com/question/20004877/answer/282033178</p>
 https://www.zhihu.com/question/20004877/answer/568581790</p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Win10安装PyGraphviz]]></title>
-        <id>https://sheldie.github.io/post/Win10安装PyGraphviz/</id>
-        <link href="https://sheldie.github.io/post/Win10安装PyGraphviz/">
-        </link>
-        <updated>2020-04-02T00:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="正确安装方法">正确安装方法</h4>
-<p>提前安装好graphviz并配置环境变量<br>
-然后在：https://github.com/CristiFati/Prebuilt-Binaries<br>
-下载对应py版本和系统的版本<br>
-到目录中执行<code>pip install pygraphviz-1.5-cp37-cp37m-win_amd64.whl</code></p>
-<h4 id="以下为个人经历">以下为个人经历</h4>
-<p>anaconda的环境为python3.7，<br>
-由于需要安装Causalnex的关系，<br>
-需要使用到pygraphviz，然而安装的时候发现与各种库的版本有冲突。。</p>
-<p>于是新建项目和虚拟环境<br>
-重新尝试<code>pip install graphviz</code><br>
-报错：Microsoft Visual C++ 14.0 is required.<br>
-（新电脑没安装Visual Studio)</p>
-<p>安装重启过后，<br>
-报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
-<p>在网上寻找解决方案，<br>
-尝试直接下载whl文件并安装：https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygraphviz<br>
-但是发现没有对应版本，只有python3.4的版本。<br>
-强行下载尝试，报错：not a supported wheel</p>
-<p>尝试使用conda新建一个python3.4的虚拟环境<br>
-倒腾半天，发现pycharm已不支持python3.4<br>
-于是删除</p>
-<p>然后尝试直接下载源代码并安装：https://github.com/pygraphviz/pygraphviz<br>
-果然还是报错fatal error C1083: 无法打开包括文件: “graphviz/cgraph.h”</p>
-<p>最后在网上找到了该库的编译版本...</p>
-<p>吐了。</p>
-<p>现正学习并尝试使用Casualnex...</p>
-<h5 id="2020-04-04-更新">2020-04-04 更新：</h5>
-<p>尝试使用CausalNex过后，发现这个库应该是还在开发中。。<br>
-使用起来挺不稳定的，近一个月还更改过集成的库<br>
-本来用的是networkx，后来换成pygraphviz的</p>
-<p>安装的时候就出现了版本不兼容的问题<br>
-运行示例代码就出现了很多问题，报错也极其诡异<br>
-粗略判断还是版本问题</p>
-<p>本人水平有限，最近精力也有限...<br>
-机器学习这方面基本是零基础<br>
-最近也是在网上找些样例在学习<br>
-主要还是把重点放在比较基础的操作上吧<br>
-有时间和条件多了解一些相关原理</p>
-<p>因为了解不够也没法很好地提出问题<br>
-所以这个库还是暂时弃用吧<br>
-会继续关注 希望能逐步完善好~</p>
 ]]></content>
     </entry>
 </feed>
